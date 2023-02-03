@@ -1,10 +1,5 @@
 import { currencyConverterState } from "../controller/currency-converter";
 
-// export let currencies = {
-//     usd: 0,
-//     eur: 0,
-// }
-
 export const K_INCREASE = 1.1;
 
 export const getCurrencyRates = async () => {

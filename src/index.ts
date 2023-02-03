@@ -7,10 +7,9 @@ import '../src/app.scss'
 
 const root = document.querySelector('#root');
 const app = createApp();
-const mainPage = createMainPage(cards, moneyAccounts);
 
-if (root) root.appendChild(mainPage);
 if (root) root.append(app)
+
 
 initCurrenciesControls()
 

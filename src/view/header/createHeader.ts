@@ -1,4 +1,4 @@
-import logoHeader from '../../assets/images/rs_school.svg';
+import logoHeader from '../../assets/images/logo.svg';
 
 import './header.scss'
 

@@ -16,7 +16,10 @@ const renderCurrencyConverter = () => {
                         </div>
                         <div class="converter-block__result">
                             <input id="base-quantity" class="converter-block__summ" placeholder="1000" type="text">
-                            <p class="converter-block__course">1 RUB = 0,0125 EUR</p>
+                            <p class="converter-block__course">1
+                                <span id="base-currency">RUB</span> = 
+                                <span id="stright-k">0,0125 </span>
+                                <span id="base-currency__to">EUR</span></p>
                         </div>
                     </div>
                     <div class="converter__block converter-block converter-block_to-convert">
@@ -28,7 +31,11 @@ const renderCurrencyConverter = () => {
                         </div>
                         <div class="converter-block__result">
                             <input id="result-quantity" class="converter-block__summ" placeholder="1000" type="text">
-                            <p class="converter-block__course">1 RUB = 0,0125 EUR</p>
+                            <p class="converter-block__course">1
+                                <span id="res-currency">RUB</span> = 
+                                <span id="reverse-k">0,0125</span>
+                                <span id="res-currency__to">EUR</span>
+                            </p>
                         </div>
                     </div>
                 </div>
