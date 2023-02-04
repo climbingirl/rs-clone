@@ -1,5 +1,5 @@
 import { getCurrencyRates, K_INCREASE } from "../model/currency-converter";
-import { CurrencyStateConverter } from "../model/types";
+import { CurrencyStateConverter } from "../model/types/types";
 import renderCurrencyConverter from "../view/right-sidebar/currency-converter/currency-converter";
 import renderCurrencyTable from "../view/right-sidebar/currency-table/currency-table";
 

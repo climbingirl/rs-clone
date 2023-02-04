@@ -1,8 +1,8 @@
-import { ICard, IMoneyAccounts } from '../../../../model/types';
-import createElement from '../../../helpers/elements/element';
+import { IResCard, IResCredit } from '../../../../../model/types/responceTypes';
+import createElement from '../../../../helpers/elements/element';
 import createPageItem from './pageItem';
 
-const createPageComponent = (title: string, items: Array<ICard> | Array<IMoneyAccounts>) => {
+const createPageComponent = (name: string, items: Array<IResCard> | Array<IResCredit>) => {
   const showItems = (scope: HTMLElement, e: Event) => {
     const componentsItems = scope.querySelectorAll<HTMLElement>('.page-item');
     const checker = <HTMLElement>e.target;
@@ -18,7 +18,7 @@ const createPageComponent = (title: string, items: Array<ICard> | Array<IMoneyAc
   const componentTitle = createElement('h1', 'page-component-title');
   const componentCheck = createElement('span', 'page-component-controller');
 
-  componentTitle.textContent = title;
+  componentTitle.textContent = name;
   componentCheck.textContent = '>';
 
   pageComponent.appendChild(componentTitle);

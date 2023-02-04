@@ -1,9 +1,9 @@
-import { ICard, IMoneyAccounts } from '../../../../model/types';
-import createElement from '../../../helpers/elements/element';
-import createItemTextContainer from './itemTextContainer';
-import createItenRate from './itemRate';
+import { IResCard, IResCredit } from '../../../../../model/types/responceTypes';
+import createElement from '../../../../helpers/elements/element';
+import createItemTextContainer from './itemComponents/itemTextContainer';
+import createItenRate from './itemComponents/itemRate';
 
-const createPageItem = (item: ICard | IMoneyAccounts) => {
+const createPageItem = (item: IResCard | IResCredit) => {
   const pageItem = createElement('div', 'page-item');
   const itemDescription = createElement('div', 'item-description');
   const itemImgContainer = createElement('div', 'item-img-container');
@@ -13,9 +13,9 @@ const createPageItem = (item: ICard | IMoneyAccounts) => {
   itemDescription.appendChild(itemImgContainer);
   itemDescription.appendChild(itemTextContainer);
 
-  if (item.type === 'MoneyAccounts') {
+  if (item.type === 'credit') {
     itemDescription.appendChild(
-      createItenRate((<IMoneyAccounts>item).rate));
+      createItenRate((<IResCredit>item).rate));
   }
 
   pageItem.style.display = 'none';

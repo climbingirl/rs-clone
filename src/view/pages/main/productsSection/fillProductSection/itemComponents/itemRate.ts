@@ -1,4 +1,4 @@
-import createElement from '../../../helpers/elements/element';
+import createElement from '../../../../../helpers/elements/element';
 
 const createItenRate = (rate: number) => {
   const interestRate = createElement('h2', 'item-rate');
