@@ -9,7 +9,7 @@ export interface IReqCard {
 }
 
 export interface IReqCredit {
-  type: string; //Credit
+  type: string; //credit
   name: string; //На недвижимость
   date: string; // 22.12.12
   term: number; // 10 (month)

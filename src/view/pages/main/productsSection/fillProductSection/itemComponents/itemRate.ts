@@ -1,9 +1,9 @@
 import createElement from '../../../../../helpers/elements/element';
 
-const createItenRate = (rate: number) => {
-  const interestRate = createElement('h2', 'item-rate');
-  interestRate.textContent = `${rate}%`;
-  return interestRate;
+const createItemRate = (rate: number) => {
+  const itemRate = createElement('h2', 'item-rate');
+  itemRate.textContent = `${rate}%`;
+  return itemRate;
 };
 
-export default createItenRate;
+export default createItemRate;

@@ -10,7 +10,7 @@ const createPageComponent = (name: string, items: Array<IResCard> | Array<IResCr
       checker.style.writingMode =
         checker.style.writingMode === 'vertical-rl' ? 'horizontal-tb' : 'vertical-rl';
     componentsItems.forEach((item) => {
-      item.style.display = item.style.display === 'none' ? 'block' : 'none';
+      item.style.display = item.style.display === 'none' ? 'flex' : 'none';
     });
   };
 
