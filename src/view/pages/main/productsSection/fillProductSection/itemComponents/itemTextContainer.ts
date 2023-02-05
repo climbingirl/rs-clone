@@ -1,7 +1,7 @@
-import { ICard, IMoneyAccounts } from '../../../../model/types';
-import createElement from '../../../helpers/elements/element';
+import { IResCard, IResCredit } from '../../../../../../model/types/responceTypes';
+import createElement from '../../../../../helpers/elements/element';
 
-const createItemTextContainer = (item: ICard | IMoneyAccounts ) => {
+const createItemTextContainer = (item: IResCard | IResCredit ) => {
   
   const itemTextContainer = createElement('div', 'item-text-container');
   const itemTitle = createElement('p', 'item-title');
@@ -16,9 +16,9 @@ const createItemTextContainer = (item: ICard | IMoneyAccounts ) => {
   itemTextContainer.appendChild(itemData);
   itemTextContainer.appendChild(itemIban);
 
-  if (item.type === 'card' && (<ICard>item).moneyBack) {
+  if (item.type === 'card' && (<IResCard>item).moneyBack) {
     const itemMoneyBack = createElement('p', 'item-money-back');
-    itemMoneyBack.textContent = `Ваш money-back${(<ICard>item).moneyBack}`;
+    itemMoneyBack.textContent = `Ваш money-back${(<IResCard>item).moneyBack}`;
     itemTextContainer.appendChild(itemMoneyBack);
   }
 
