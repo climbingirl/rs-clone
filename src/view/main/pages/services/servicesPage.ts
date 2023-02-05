@@ -1,5 +1,6 @@
 import createElement from "../../../helpers/elements/element";
 import createServicesSection from "./servicesSection";
+import './servicesPage.scss'
 
 const createServicesPage = ():HTMLElement => {
   const servicesPage = createElement('div', 'services-page');

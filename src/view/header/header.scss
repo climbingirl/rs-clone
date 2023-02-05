@@ -5,7 +5,7 @@
     width: 1360px;
     margin: 0 auto;
     align-items: center;
-    
+
     &__logo {
         width: 100%;
         max-width: 64px;
@@ -23,7 +23,7 @@
         align-items: center;
         justify-content: center;
     }
-    
+
     &__item:not(:last-child) {
         margin-right: 20px;
     }
@@ -40,7 +40,7 @@
     gap: 32px;
     margin-left: auto;
     align-items: center;
-    
+
 
     &__logo {
         width: 36px;
@@ -57,5 +57,5 @@
         border: none;
         cursor: pointer;
     }
-    
+
 }

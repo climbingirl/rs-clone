@@ -18,7 +18,7 @@ const handleCreateCard = async (event: Event): Promise<void> => {
   await createItem('cards', cardData);
 
   form.style.display = 'none';
-  const message = <HTMLElement>document.getElementById('create-card-modal');
+  const message = <HTMLElement>document.getElementById('modal__message');
   message.innerText = `Поздравляем вы создали карту ${cardData.name}!`;
 }
 

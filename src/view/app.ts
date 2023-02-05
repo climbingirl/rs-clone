@@ -5,7 +5,7 @@ import createHeader from './header/createHeader';
 import createMain from './main/createMain';
 import createMainPage from './pages/main/page';
 import createSidebar from './right-sidebar/sidebar';
-import createServicesPage from './main/pages/services/page';
+import createServicesPage from './main/pages/services/servicesPage';
 
 
 const createApp = () => {

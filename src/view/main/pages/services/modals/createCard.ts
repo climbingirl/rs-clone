@@ -1,5 +1,4 @@
 import handleCreateCard from "../../../../../controller/servicesController";
-import createButton from "../../../../helpers/elements/button";
 import createElement from "../../../../helpers/elements/element";
 
 const createCardForm = () => {
@@ -10,7 +9,7 @@ const createCardForm = () => {
       <input class="card-name" id="card-name" type="text" value="MasterCard" required>
     </div>
     <div class="form__item">
-      <label for="card-balance"Баланс карты</label>
+      <label for="card-balance">Баланс карты</label>
       <input class="card-balance" id="card-balance" type="number" value="300" required>
     </div>
     <div class="form__item">

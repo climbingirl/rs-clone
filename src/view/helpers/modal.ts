@@ -4,7 +4,7 @@ import createElement from "./elements/element";
 
 const createModal = (idName: string): HTMLElement => {
   const modal = createElement('div', 'modal', idName);
-  const message = createElement('div', 'modal__message');
+  const message = createElement('div', 'modal__message', 'modal__message');
   const closeBtn = createButton('X', 'modal__close-btn');
 
   modal.style.display = 'none';
