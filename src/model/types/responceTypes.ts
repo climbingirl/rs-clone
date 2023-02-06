@@ -1,5 +1,5 @@
 export interface IResCard {
-  id: string;
+  _id: string;
   type: string;
   name: string;
   date: string;
@@ -11,7 +11,7 @@ export interface IResCard {
 }
 
 export interface IResCredit {
-  id: string;
+  _id: string;
   type: string; //Credit
   name: string; //На недвижимость
   date: string; // 22.12.12
