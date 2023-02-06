@@ -1,10 +1,8 @@
+import createElement from '../helpers/elements/element';
 import './main.scss';
 
 const createMain = () => {
-    return `
-        <main class="main">
-        </main>
-    `
+    return createElement('main', 'main');
 }
 
 export default createMain;
