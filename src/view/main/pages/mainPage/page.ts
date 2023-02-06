@@ -1,4 +1,4 @@
-import createElement from '../../helpers/elements/element';
+import createElement from '../../../helpers/elements/element';
 import createProductsSection from './productsSection/productsSection';
 
 
