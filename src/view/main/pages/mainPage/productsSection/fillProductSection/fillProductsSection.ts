@@ -1,5 +1,6 @@
-import { getItems } from '../../../../../model/requests';
-import { IResCard, IResCredit } from '../../../../../model/types/responceTypes';
+
+import { getItems } from '../../../../../../model/requests';
+import { IResCard, IResCredit } from '../../../../../../model/types/responceTypes';
 import createPageComponent from './pageComponent';
 
 const fillProductsSection = async (section: HTMLElement) => {

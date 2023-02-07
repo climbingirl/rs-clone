@@ -12,7 +12,7 @@ const handleCreateCard = async (event: Event): Promise<void> => {
     currency: (<HTMLInputElement>document.getElementById('card-currency')).value,
     balance: +(<HTMLInputElement>document.getElementById('card-balance')).value,
     moneyBack: 0,
-    iban: "BY000000001023425",
+    iban: 'BY000000001023425',
   };
 
   await createItem('cards', cardData);
@@ -20,6 +20,6 @@ const handleCreateCard = async (event: Event): Promise<void> => {
   form.style.display = 'none';
   const message = <HTMLElement>document.getElementById('modal__message');
   message.innerText = `Поздравляем вы создали карту ${cardData.name}!`;
-}
+};
 
 export default handleCreateCard;

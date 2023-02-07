@@ -1,6 +1,7 @@
-import { IResCard, IResCredit } from './../../../../../../model/types/responceTypes';
-import createElement from '../../../../../helpers/elements/element';
-import openArrow from '../../../../../../assets/images/open-arrow.svg';
+
+import { IResCard, IResCredit } from '../../../../../../../model/types/responceTypes';
+import openArrow from '../../../../../../../assets/images/open-arrow.svg';
+import createElement from '../../../../../../helpers/elements/element';
 
 const createItemBalance = (item: IResCard | IResCredit) => {
   const balanceContainer = createElement('div', 'item-balance-container');
