@@ -1,9 +1,9 @@
-import { IResCard, IResCredit } from '../../../../../model/types/responceTypes';
-import createElement from '../../../../helpers/elements/element';
 import createItemTextContainer from './itemComponents/itemTextContainer';
 import createItemRate from './itemComponents/itemRate';
 import createItemBalance from './itemComponents/itemBalance';
 import createItemIcon from './itemComponents/itemIcon';
+import { IResCard, IResCredit } from '../../../../../../model/types/responceTypes';
+import createElement from '../../../../../helpers/elements/element';
 
 const createPageItem = (item: IResCard | IResCredit) => {
   const pageItem = createElement('div', 'page-item');

@@ -1,8 +1,8 @@
-import { IResCard, IResCredit } from '../../../../../model/types/responceTypes';
-import createElement from '../../../../helpers/elements/element';
 import createPageItem from './pageItem';
-import openArrow from '../../../../../assets/images/open-arrow.svg';
+import openArrow from '../../../../../../assets/images/open-arrow.svg';
 import rotateArrow from '../rotateArrow';
+import { IResCard, IResCredit } from '../../../../../../model/types/responceTypes';
+import createElement from '../../../../../helpers/elements/element';
 
 const createPageComponent = (name: string, items: Array<IResCard> | Array<IResCredit>) => {
 
