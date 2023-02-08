@@ -1,3 +1,4 @@
+import { closeModal } from './helpers/modal';
 import { IResCard, IResCredit } from './../model/types/responceTypes';
 import { getItems } from './../model/requests';
 
@@ -6,6 +7,7 @@ import createMain from './main/createMain';
 import createMainPage from './pages/main/page';
 import createSidebar from './right-sidebar/sidebar';
 import createServicesPage from './main/pages/services/servicesPage';
+import createElement from './helpers/elements/element';
 
 
 const createApp = () => {
@@ -16,9 +18,11 @@ const createApp = () => {
   const header = createHeader();
   const main = createMain();
   const sidebar = createSidebar();
+  const overlay = createElement('div', 'overlay', 'overlay')
 
   container.prepend(main);
   container.insertAdjacentHTML('beforeend', sidebar);
+  container.append(overlay);
   app.insertAdjacentHTML('afterbegin', header);
   app.insertAdjacentElement('beforeend', container);
 
@@ -27,6 +31,8 @@ const createApp = () => {
 
   const servicesPage = createServicesPage();
   main.append(servicesPage);
+
+  overlay.addEventListener('click', closeModal);
 
   return app;
 };

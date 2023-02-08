@@ -45,11 +45,12 @@ a {
 }
 
 .modal {
+  display: none;
   position: absolute;
-  top: 50%;
+  top: calc(50% - 100px);
   left: 0;
   right: 0;
-  width: 50%;
+  width: 600px;
   padding: 30px 30px;
   margin: 0 auto;
   text-align: center;
@@ -62,5 +63,24 @@ a {
     position: absolute;
     right: 20px;
     top: 10px;
+  }
+
+  &.open {
+    display: block;
+  }
+}
+
+.overlay {
+  display: none;
+  background-color: rgba($color-black, 0.25);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+
+  &.open {
+    display: block;
   }
 }

@@ -4,13 +4,16 @@ import { createItem } from './../model/requests';
 const handleCreateCard = async (event: Event): Promise<void> => {
   event.preventDefault();
   const form = <HTMLElement>event.target;
+  const cardName = <HTMLInputElement>document.getElementById('card-name');
+  const cardDate = <HTMLInputElement>document.getElementById('card-date');
+  const cardCurrency = <HTMLInputElement>document.getElementById('card-currency');
 
   const cardData: IReqCard = {
     type: 'card',
-    name: (<HTMLInputElement>document.getElementById('card-name')).value,
-    date: (<HTMLInputElement>document.getElementById('card-date')).value,
-    currency: (<HTMLInputElement>document.getElementById('card-currency')).value,
-    balance: +(<HTMLInputElement>document.getElementById('card-balance')).value,
+    name: cardName.value,
+    date: cardDate.value,
+    currency: cardCurrency.value,
+    balance: 0,
     moneyBack: 0,
     iban: "BY000000001023425",
   };
@@ -18,6 +21,7 @@ const handleCreateCard = async (event: Event): Promise<void> => {
   await createItem('cards', cardData);
 
   form.style.display = 'none';
+  cardName.value = '';
   const message = <HTMLElement>document.getElementById('modal__message');
   message.innerText = `Поздравляем вы создали карту ${cardData.name}!`;
 }
