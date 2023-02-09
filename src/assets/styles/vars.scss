@@ -3,5 +3,19 @@ $color-background: #f0f3f6;
 $color-yellow: #faea68;
 $color-yellow-hover: #f5bf42;
 $color-grey: #343a40;
+$color-grey-hover: #2F4F4F;
+$color-green: #006400;
 $border-8: 8px;
 $border-4: 4px;
+$transition: .3s;
+
+
+@mixin exo {
+    font-family: 'Exo 2', sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+}
+
+@mixin taviraj {
+    font-family: 'Taviraj', serif;
+}

@@ -1,7 +1,0 @@
-export const BEL_TO_RUS = 28;
-
-export const metallsTypes = {
-    0: 'Золото',
-    1: 'Серебро',
-    2: 'Платина'
-}

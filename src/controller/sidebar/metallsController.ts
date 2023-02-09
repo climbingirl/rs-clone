@@ -1,47 +1,95 @@
 import { getDinamicMetallPrices } from "../../model/requests";
-import { filterMetalDataType } from "../../view/helpers/functions";
+import { defineMetal, filterMetalDataType, getDatesArr2, getLastThreeDays, translateDate } from "../../view/helpers/functions";
 import Chart from 'chart.js/auto';
 import createElement from "../../view/helpers/elements/element";
+import { metallsTypes } from "../../static/constants";
+import { ChartConfig, IMetalChartType, IMetalRes } from "../../model/types/types";
+import changePath from "../changePath";
 
-const getToday = () => {
-    let date =  new Date()
-    let endDate  = `${date.getFullYear()}/${date.getMonth()+1}/${date.getDay()}`
-    let startDate = new Date(date.getTime() - 604800000);
-    return [
-        `${startDate.getFullYear()}/${startDate.getMonth()+1}/${startDate.getDay()}`, 
-        `${date.getFullYear()}/${date.getMonth()+1}/${date.getDay()}`
-         
-    ]
+export const getMetalData = async (types: number[], dates?: string[]) => {
+    if (!dates) {
+        dates = getLastThreeDays(); 
+    }
+    const metalData = await getDinamicMetallPrices(dates);
+    const datatoDraw: IMetalRes[] = [];
+    types.forEach((type) => {
+        const metalDataTransform: IMetalRes = filterMetalDataType(metalData, type);
+        console.log(metalDataTransform)
+        datatoDraw.push(metalDataTransform)
+
+    })
+    return datatoDraw
 }
 
-const getMetalData = async () => {
-    const date = getToday();
-    const metalData = await getDinamicMetallPrices(date);
-    console.log(filterMetalDataType(metalData, 1))
-    const ctx = createElement('div', 'ctx', 'ctx')
+export const makeConfig = (data: IMetalRes[], dates?: string[]) => {
+    if (!dates) {
+        dates = getLastThreeDays(); 
+    }
+    console.log(dates)
+    let labels = data[0].dates
+    let sets = []
+    let datasetsArr = data
+    for (let i=0; i< data.length; i++) {
+        sets.push({
+            data: data[i].data,
+            label: data[i].label,
+            type: data[i].type
+        })
+    }
+    let config: ChartConfig = {
+        type: 'bar',
+        data: {
+            datasets: datasetsArr,
+            labels: labels
+        },
+        options: {
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Стоимость драгоценных металлов, за 1 гр',
+                    responsive: true,
+                    padding: {
+                        top: 20,
+                        bottom: 20
+                    }
+                }
+            }
+        }
+    }
+    console.log(config)
+    return config;
     
-
-
-//   new Chart(ctx, {
-//     type: 'bar',
-//     data: {
-//       labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-//       datasets: [{
-//         label: '# of Votes',
-//         data: [12, 19, 3, 5, 2, 3],
-//         borderWidth: 1
-//       }]
-//     },
-//     options: {
-//       scales: {
-//         y: {
-//           beginAtZero: true
-//         }
-//       }
-//     }
-//   });
 }
 
-export const initMetalsControls = () => {
-    getMetalData()
+const drawChartToSidebar = (config: ChartConfig) => {
+    const ctx = document.createElement('canvas');
+        new Chart(
+        ctx,
+        config
+    )
+    const sidebar = document.querySelector('.right-sidebar');
+    if (sidebar) {
+        sidebar.append(ctx);
+        const link = document.createElement('a')
+        link.classList.add('link')
+        link.textContent = 'Динамика курсов'
+        link.dataset.path = 'metals'
+        link.addEventListener('click', (e) => changePath(e));
+        sidebar.append(link)
+        
+    }
 }
+
+
+export const initMetalsControls = async () => {
+    let metals = []
+    for (const [key, value] of Object.entries(metallsTypes)) {
+        metals.push(value)
+    }
+    const metalsData = await getMetalData(metals)
+    const config = makeConfig(metalsData)
+    drawChartToSidebar(config)
+    
+}
+
+

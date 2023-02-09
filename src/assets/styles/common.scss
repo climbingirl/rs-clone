@@ -1,9 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;600&family=Roboto+Slab&family=Taviraj:wght@400;600&display=swap');
+
 html {
   box-sizing: border-box;
 }
 
 body {
     background: $color-background;
+    font-family: 'Roboto Slab', serif;
 }
 *,
 *::before,
@@ -42,6 +45,7 @@ a {
     background-color: $color-white;
     border-radius: $border-8;
     padding: 16px 24px;
+    margin-bottom: 40px;
 }
 
 .modal {

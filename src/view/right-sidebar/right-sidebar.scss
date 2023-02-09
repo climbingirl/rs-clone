@@ -1,4 +1,9 @@
 .right-sidebar {
     width: 30%;
     background: $color-background;
+
+    h3 {
+        @include exo;
+    }
+    
 }
