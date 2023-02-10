@@ -1,10 +1,10 @@
 import { getDinamicMetallPrices } from "../../model/requests";
-import { defineMetal, filterMetalDataType, getDatesArr2, getLastThreeDays, translateDate } from "../../view/helpers/functions";
+import { filterMetalDataType, getLastThreeDays } from "../../view/helpers/functions";
 import Chart from 'chart.js/auto';
-import createElement from "../../view/helpers/elements/element";
 import { metallsTypes } from "../../static/constants";
-import { ChartConfig, IMetalChartType, IMetalRes } from "../../model/types/types";
+import { ChartConfig, IMetalRes } from "../../model/types/types";
 import changePath from "../changePath";
+import createButton from "../../view/helpers/elements/button";
 
 export const getMetalData = async (types: number[], dates?: string[]) => {
     if (!dates) {
@@ -14,7 +14,6 @@ export const getMetalData = async (types: number[], dates?: string[]) => {
     const datatoDraw: IMetalRes[] = [];
     types.forEach((type) => {
         const metalDataTransform: IMetalRes = filterMetalDataType(metalData, type);
-        console.log(metalDataTransform)
         datatoDraw.push(metalDataTransform)
 
     })
@@ -25,7 +24,6 @@ export const makeConfig = (data: IMetalRes[], dates?: string[]) => {
     if (!dates) {
         dates = getLastThreeDays(); 
     }
-    console.log(dates)
     let labels = data[0].dates
     let sets = []
     let datasetsArr = data
@@ -56,7 +54,6 @@ export const makeConfig = (data: IMetalRes[], dates?: string[]) => {
             }
         }
     }
-    console.log(config)
     return config;
     
 }
@@ -70,16 +67,14 @@ const drawChartToSidebar = (config: ChartConfig) => {
     const sidebar = document.querySelector('.right-sidebar');
     if (sidebar) {
         sidebar.append(ctx);
-        const link = document.createElement('a')
-        link.classList.add('link')
-        link.textContent = 'Динамика курсов'
+        const link = createButton('Динамика курсов', 'link')
+        link.classList.add('link_margin')
         link.dataset.path = 'metals'
         link.addEventListener('click', (e) => changePath(e));
         sidebar.append(link)
         
     }
 }
-
 
 export const initMetalsControls = async () => {
     let metals = []
@@ -89,7 +84,6 @@ export const initMetalsControls = async () => {
     const metalsData = await getMetalData(metals)
     const config = makeConfig(metalsData)
     drawChartToSidebar(config)
-    
 }
 
 

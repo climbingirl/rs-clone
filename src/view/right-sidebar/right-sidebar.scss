@@ -2,8 +2,17 @@
     width: 30%;
     background: $color-background;
 
+    @media (max-width: $tablet) {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        padding-top: 24px;
+    }
+
     h3 {
         @include exo;
     }
+
+
     
 }

@@ -17,8 +17,8 @@ const updateCurrencyTable = (currencies: CurrencyStateConverter) => {
         const salePrice = document.querySelector(`.currency-table__item[data-currency=${currencyName}] > .currency-table_sale`)
         const buyPrice = document.querySelector(`.currency-table__item[data-currency=${currencyName}] > .currency-table_buy`)
         if (salePrice && buyPrice) {
-            salePrice.textContent = String(currencies.usd)
-            buyPrice.textContent = String(currencies.usd * K_INCREASE) 
+            salePrice.textContent = String(Number(currencies.usd).toFixed(2))
+            buyPrice.textContent = String(Number(currencies.usd * K_INCREASE).toFixed(2)) 
         }
     }
 }
@@ -37,13 +37,10 @@ const getCurrencyRatio = () => {
     let reverseK = 1
     let convertCurr = currencyConverterState.convertCurrency
     let baseCurr = currencyConverterState.baseCurrency;
-    console.log(`baseCurr: ${baseCurr}`)
     switch(baseCurr === convertCurr) {
         case true :
-           console.log('true')
             break
         case false:
-            console.log('false')
             let basePrice = findPrice(baseCurr);
             let convertPrice = findPrice(convertCurr);
             rightK = basePrice / convertPrice
@@ -66,7 +63,7 @@ const updateConverterQuantuty = () => {
         base.value = String(currencyConverterState.baseQuantity);
         let {rightK, reverseK} = getCurrencyRatio();
         result.value = String(Number(currencyConverterState.baseQuantity * rightK).toFixed(2));
-        strightKEl.textContent = String(`${Number(rightK).toFixed(3)}`)
+        strightKEl.textContent = String(`${Number(rightK).toFixed(2)}`)
         if (rightK !== 1) {
             reverseKEl.textContent = String(`${Number(reverseK).toFixed(2)}`)
         } else {
@@ -92,8 +89,6 @@ const listenInpQuantity = () => {
 
 const findPrice = (nameCurr: string) => {
     const currenciesArr = Object.entries(currencyConverterState);
-    console.log(currenciesArr)
-    console.log(nameCurr)
     let res = 0
     for ( let i=0; i < currenciesArr.length; i++) {
         if (currenciesArr[i][0] === nameCurr) {

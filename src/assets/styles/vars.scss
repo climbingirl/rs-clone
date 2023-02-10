@@ -8,7 +8,9 @@ $color-green: #006400;
 $border-8: 8px;
 $border-4: 4px;
 $transition: .3s;
-
+$desktop-s: 1350px;
+$tablet: 780px;
+$mobile: 540px;
 
 @mixin exo {
     font-family: 'Exo 2', sans-serif;

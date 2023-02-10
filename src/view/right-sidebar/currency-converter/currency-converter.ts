@@ -4,7 +4,7 @@ const renderCurrencyConverter = () => {
      const sidebar: HTMLElement | null = document.querySelector('.right-sidebar');
     if (sidebar) {
         sidebar.insertAdjacentHTML('beforeend', `
-            <section class="currency-converter">
+            <section class="converter__wr">
                 <h2> Конвертер валют</h2>
                 <div class="converter">
                     <div class="converter__block converter-block converter-block_base">
