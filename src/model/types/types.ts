@@ -27,3 +27,12 @@ export interface CurrencyStateConverter {
   usd: number,
   eur: number,
 }
+
+export interface ILoan {
+  porpose: string;
+  rate: number;
+  minSum: number;
+  maxSum: number;
+  minTerm: number;
+  maxTerm: number;
+};

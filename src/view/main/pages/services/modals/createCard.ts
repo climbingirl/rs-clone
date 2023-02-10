@@ -1,8 +1,8 @@
-import handleCreateCard from "../../../../../controller/servicesController";
+import handleCreateCard from "../../../../../controller/services-controllers/card-controller";
 import { getCurrentDate } from "../../../../../model/utils";
 import createElement from "../../../../helpers/elements/element";
 
-const createCardForm = () => {
+const createCardForm = (): HTMLElement => {
   const form = createElement('form', 'create-card-form', 'create-card-form');
   form.innerHTML = `
     <div class="form__item">
@@ -17,10 +17,7 @@ const createCardForm = () => {
         <option value="rub">RUB</option>
       </select>
     </div>
-    <div class="form__item">
-      <label for="card-date">Дата открытия карты</label>
-      <input class="card-date" id="card-date" type="date" value=${getCurrentDate()} disabled>
-    </div>
+    <div class="card-date" id="card-date">Дата открытия карты: ${getCurrentDate()}</div>
     <button class="button form__btn btn">Открыть карту</button>
   `;
 

@@ -6,7 +6,7 @@ const services: {
   [key: string]: string;
 } = {
   "create-card": "Создать виртуальную карту",
-  "create-deposit": "Открыть вклад",
+  "open-deposit": "Открыть вклад",
   "get-loan": "Получить кредит",
 };
 

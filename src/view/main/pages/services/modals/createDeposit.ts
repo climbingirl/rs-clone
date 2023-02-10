@@ -1,9 +1,8 @@
-import handleCreateCard from "../../../../../controller/servicesController";
 import { getCurrentDate } from "../../../../../model/utils";
 import createElement from "../../../../helpers/elements/element";
 
-const createDepositForm = () => {
-  const form = createElement('form', 'create-deposit-form', 'create-deposit-form');
+const createDepositForm = (): HTMLElement => {
+  const form = createElement('form', 'open-deposit-form', 'open-deposit-form');
   form.innerHTML = `
     <div class="form__item">
       <label for="deposit-name">Название вклада</label>
@@ -17,10 +16,7 @@ const createDepositForm = () => {
         <option value="rub">RUB</option>
       </select>
     </div>
-    <div class="form__item">
-      <label for="deposit-date">Дата открытия вклада</label>
-      <input class="deposit-date" id="deposit-date" type="date" value=${getCurrentDate()} disabled>
-    </div>
+    <div class="deposit-date" id="deposit-date">Дата открытия вклада: ${getCurrentDate()}</div>
     <button class="button form__btn btn">Открыть вклад</button>
   `;
 

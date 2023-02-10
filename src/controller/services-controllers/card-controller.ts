@@ -1,17 +1,17 @@
-import { IReqCard } from '../model/types/types';
-import { createItem } from './../model/requests';
+import { IReqCard } from '../../model/types/types';
+import { createItem } from '../../model/requests';
 
 const handleCreateCard = async (event: Event): Promise<void> => {
   event.preventDefault();
   const form = <HTMLElement>event.target;
   const cardName = <HTMLInputElement>document.getElementById('card-name');
-  const cardDate = <HTMLInputElement>document.getElementById('card-date');
+  const cardDate = <HTMLElement>document.getElementById('card-date');
   const cardCurrency = <HTMLInputElement>document.getElementById('card-currency');
 
   const cardData: IReqCard = {
     type: 'card',
     name: cardName.value,
-    date: cardDate.value,
+    date: cardDate.innerText,
     currency: cardCurrency.value,
     balance: 0,
     moneyBack: 0,
