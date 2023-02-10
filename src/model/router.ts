@@ -1,6 +1,6 @@
 import { createMetalsPage } from '../view/main/pages/metalsPage/metalsChart';
 import createMainPage from '../view/main/pages/mainPage/page';
-import createServicesPage from '../view/main/pages/services/servicesPage';
+import createServicesPage from '../view/main/pages/servicesPage/servicesPage';
 
 export const router = () => {
   const main = document.querySelector('.main');
