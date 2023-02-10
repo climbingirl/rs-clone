@@ -17,8 +17,10 @@ const createCardForm = (): HTMLElement => {
         <option value="rub">RUB</option>
       </select>
     </div>
-    <div class="card-date" id="card-date">Дата открытия карты: ${getCurrentDate()}</div>
-    <button class="button form__btn btn">Открыть карту</button>
+    <div class="form__item">
+      <div class="card-date" id="card-date">Дата открытия карты: ${getCurrentDate()}</div>
+    </div>
+    <button class="form__btn btn-primary">Открыть карту</button>
   `;
 
   form.addEventListener('submit', handleCreateCard);

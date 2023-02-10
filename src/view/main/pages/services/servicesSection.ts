@@ -12,7 +12,7 @@ const services: {
 
 const createServicesSection = (): HTMLElement => {
   const servicesSection = createElement("div", "services");
-  const servicesTitle = createElement("h3", "services__title");
+  const servicesTitle = createElement("h2", "services__title");
   const serrvicesInner = createElement("div", "services__inner");
   const servicesItems = Object.entries(services).map((el) =>
     createServicesItem(el[0], el[1])

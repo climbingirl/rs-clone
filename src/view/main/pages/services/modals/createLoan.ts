@@ -16,6 +16,7 @@ let selectedPurpose: string = 'any';
 
 const createLoanForm = (): HTMLElement => {
   const form = createElement('form', 'get-loan-form', 'get-loan-form');
+  const forItem = createElement('div', 'form__item');
   const labelPurpose= createElement('label');
   const selectPurpose = <HTMLSelectElement>createElement('select', 'loan-purpose', 'loan-purpose');
   const loanInfo = createElement('div', 'loan__info', 'loan__info');
@@ -30,7 +31,8 @@ const createLoanForm = (): HTMLElement => {
   }
 
   labelPurpose.append(selectPurpose);
-  form.prepend(labelPurpose);
+  forItem.append(labelPurpose)
+  form.prepend(forItem);
   form.append(loanInfo);
 
   selectPurpose.addEventListener('change', (event: Event): void => {
@@ -59,8 +61,10 @@ function renderLoanInfo(): string {
         placeholder="от ${loans[selectedPurpose].minTerm} до ${loans[selectedPurpose].maxTerm}" required>
     </div>
     <div class="loan-rate" id="loan-rate">Годовая ставка: ${loans[selectedPurpose].rate}%</div>
-    <div class="loan-date" id="loan-date">Дата получения кредита: ${getCurrentDate()}</div>
-    <button class="button form__btn btn">Получить кредит</button>
+    <div class="form__item">
+      <div class="loan-date" id="loan-date">Дата получения кредита: ${getCurrentDate()}</div>
+    </div>
+    <button class="form__btn btn-primary">Получить кредит</button>
   `;
 }
 

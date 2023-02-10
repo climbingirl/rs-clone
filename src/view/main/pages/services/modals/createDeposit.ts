@@ -16,8 +16,10 @@ const createDepositForm = (): HTMLElement => {
         <option value="rub">RUB</option>
       </select>
     </div>
-    <div class="deposit-date" id="deposit-date">Дата открытия вклада: ${getCurrentDate()}</div>
-    <button class="button form__btn btn">Открыть вклад</button>
+    <div class="form__item">
+      <div class="deposit-date" id="deposit-date">Дата открытия вклада: ${getCurrentDate()}</div>
+    </div>
+    <button class="form__btn btn-primary">Открыть вклад</button>
   `;
 
   form.addEventListener('submit', () => {

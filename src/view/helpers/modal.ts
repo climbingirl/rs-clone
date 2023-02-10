@@ -1,10 +1,10 @@
-import createButton from "./elements/button";
 import createElement from "./elements/element";
 
 export const createModal = (idName: string): HTMLElement => {
   const modal = createElement("div", "modal", idName);
   const message = createElement("div", "modal__message", "modal__message");
-  const closeBtn = createButton("X", "modal__close-btn");
+  const closeBtn = createElement("div", "modal__close-btn", "modal__close-btn");
+  closeBtn.innerHTML = "&#10006;";
 
   modal.append(closeBtn);
   modal.append(message);
@@ -21,4 +21,4 @@ export const closeModal = (): void => {
   modal.classList.remove("open");
   overlay.classList.remove("open");
   message.innerText = "";
-}
+};
