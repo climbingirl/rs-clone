@@ -19,16 +19,16 @@ const renderCurrencyTable = () => {
                         </thead>
                         <tbody>
                             <tr class="currency-table__item" data-currency="usd">
-                                <td>Доллар</td>
-                                <td>1</td>
-                                <td class="currency-table_sale">0</td>
-                                <td class="currency-table_buy">0</td>
+                                <td data-label="Валюта">Доллар</td>
+                                <td data-label="Количество">1</td>
+                                <td data-label="Продать" class="currency-table_sale">0</td>
+                                <td data-label="Купить" class="currency-table_buy">0</td>
                             </tr>
                             <tr class="currency-table__item" data-currency="eur">
-                                <td>Евро</td>
-                                <td>1</td>
-                                <td class="currency-table_sale">0</td>
-                                <td class="currency-table_buy">0</td>
+                                <td data-label="Валюта">Евро</td>
+                                <td data-label="Количество">1</td>
+                                <td data-label="Продать" class="currency-table_sale">0</td>
+                                <td data-label="Купить" class="currency-table_buy">0</td>
                             </tr>
                         </tbody>
                     </table>

@@ -36,3 +36,36 @@ export interface ILoan {
   minTerm: number;
   maxTerm: number;
 };
+
+export interface IMetalRes {
+    label: string,
+    data: number[],
+    type: string,
+    dates: string[]
+}
+
+
+export interface IMetalChartType {
+    label: string,
+    data: number[],
+    //type: string,
+}
+
+export type ChartConfig = {
+    type: 'line' | 'bar',
+    data: {
+        datasets: IMetalChartType[],
+        labels: string[]
+    },
+    options?: {}
+}
+
+/*data: {
+        labels: data.map(row => row.year),
+        datasets: [
+          {
+            label: 'Acquisitions by year',
+            data: data.map(row => row.count)
+          }
+        ]
+      }*/
