@@ -31,3 +31,9 @@ export interface IResMoneyAccounts {
   iban: string;
   rate: number;
 }
+
+export interface IMetalData {
+    Date: string,
+    MetalId: number,
+    Value: number
+}

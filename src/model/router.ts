@@ -1,3 +1,4 @@
+import { createMetalsPage } from '../view/main/pages/metalsPage/metalsChart';
 import createMainPage from '../view/main/pages/mainPage/page';
 import createServicesPage from '../view/main/pages/services/servicesPage';
 
@@ -15,6 +16,9 @@ export const router = () => {
   } else if (path === '/services') {
     const servicesPage = createServicesPage();
     main.append(servicesPage);
+  } else if (path === '/metals') {
+    const metalsPage = createMetalsPage();
+    main.append(metalsPage);
   } else {
     const mainPage = createMainPage();
     main.appendChild(mainPage);

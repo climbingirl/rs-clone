@@ -2,9 +2,23 @@
     display: flex;
     gap: 40px;
 
+    @media (max-width: $desktop-s) {
+        flex-direction: column;
+    }
+    
+    @media (max-width: $tablet) {
+        flex-direction: row;
+    }
+
     &__block {
         max-width: 360px;
         width: 100%;
+    }
+
+    &__wr {
+        @media (max-width: $tablet) {
+            width: 100%;
+        }
     }
 }
 
@@ -51,6 +65,14 @@
             height: 24px;
             background-size: contain;
             background-repeat: no-repeat;
+
+            @media (max-width: $desktop-s) {
+                top: unset;
+                right: unset;
+                left: 48%;
+                bottom: -32px;
+                transform: rotateZ(90deg);
+            }
         }
 
     }

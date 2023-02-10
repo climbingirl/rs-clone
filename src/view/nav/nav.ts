@@ -4,7 +4,6 @@ import createNavList from './navList';
 const createNav = () => {
   const nav = createElement('nav', 'menu');
   const navList = createNavList();
-
   nav.appendChild(navList);
   return nav;
 };

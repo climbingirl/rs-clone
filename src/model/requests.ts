@@ -36,3 +36,11 @@ export const deleteItem = async (category: string, id: string) => {
     method: 'DELETE',
   });
 };
+
+
+export const getDinamicMetallPrices = async (dates: string[]) => {
+    const result = await fetch(`https://www.nbrb.by/api/bankingots/prices?startdate=${dates[0]}&enddate=${dates[1]}`)
+    const data = await result.json()
+    const res = await data;
+    return res
+}
