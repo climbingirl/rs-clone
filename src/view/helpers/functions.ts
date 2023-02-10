@@ -1,5 +1,5 @@
 import { IMetalData } from "../../model/types/responceTypes"
-import { BEL_TO_RUS, dayTimeStamp, metallsTypes, metallsTypesInRu, months } from "../../static/constants"
+import { BEL_TO_RUS, dayTimeStamp, metallsTypes, metallsTypesInRu,  } from "../../static/constants"
 
 export const getLastThreeDays = () => {
     let today =  new Date()
