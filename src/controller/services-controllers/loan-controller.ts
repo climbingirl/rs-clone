@@ -8,21 +8,22 @@ const handleGetLoan = async (event: Event): Promise<void> => {
   const loanDate = <HTMLElement>document.getElementById('loan-date');
   const loanTerm = <HTMLInputElement>document.getElementById('loan-term');
   const loanRate = <HTMLElement>document.getElementById('loan-rate');
+  const loanCurrency = <HTMLSelectElement>document.getElementById('loan-currency');
   const loanSum = <HTMLInputElement>document.getElementById('loan-sum');
 
   const loanData: IReqCredit = {
     type: 'credit',
-    name: loanName.value,
+    name: loanName.options[loanName.selectedIndex].innerText,
     date: loanDate.innerText,
-    rate: +loanRate.innerText,
     term: +loanTerm.value,
-    currency: 'RUB',
+    rate: +loanRate.innerText,
+    currency: loanCurrency.value.toLowerCase(),
     totalSum: +loanSum.value,
     paid: 0,
     iban: "BY000000001023425",
   };
 
-  await createItem('credits', loanData);
+  //await createItem('credits', loanData);
 
   form.style.display = 'none';
   loanTerm.value = '';

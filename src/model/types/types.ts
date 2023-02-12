@@ -28,14 +28,21 @@ export interface CurrencyStateConverter {
   eur: number,
 }
 
-export interface ILoan {
-  porpose: string;
-  rate: number;
-  minSum: number;
-  maxSum: number;
+export type purpose = 'any' | 'car' | 'studying' | 'realty';
+
+export type currency = 'rub' | 'usd' | 'eur';
+
+export type ILoan = {
+  [key in currency]: {
+    rate: number;
+    minSum: number;
+    maxSum: number;
+  };
+} & {
+  purpose: string;
   minTerm: number;
   maxTerm: number;
-};
+}
 
 export interface IMetalRes {
     label: string,
