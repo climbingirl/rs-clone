@@ -1,3 +1,5 @@
+import { IUser } from './types';
+
 export interface IResCard {
   _id: string;
   type: string;
@@ -33,7 +35,13 @@ export interface IResMoneyAccounts {
 }
 
 export interface IMetalData {
-    Date: string,
-    MetalId: number,
-    Value: number
+  Date: string;
+  MetalId: number;
+  Value: number;
+}
+
+export interface IResAuth {
+  accessToken: string;
+  refreshToken: string;
+  user: IUser;
 }
