@@ -44,6 +44,13 @@ export type ILoan = {
   maxTerm: number;
 }
 
+export interface IDeposit {
+  term: string;
+  rate: {
+    [key in currency]: number;
+  }
+}
+
 export interface IMetalRes {
     label: string,
     data: number[],

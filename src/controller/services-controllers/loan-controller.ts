@@ -23,7 +23,7 @@ const handleGetLoan = async (event: Event): Promise<void> => {
     iban: "BY000000001023425",
   };
 
-  //await createItem('credits', loanData);
+  await createItem('credits', loanData);
 
   form.style.display = 'none';
   loanTerm.value = '';

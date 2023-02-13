@@ -45,12 +45,12 @@ let selectedCurrency: currency = "rub";
 
 const createLoanForm = (): HTMLElement => {
   const form = createElement("form", "get-loan-form", "get-loan-form");
-  const forItemPurpose = createElement("div", "form__item");
+  const formItemPurpose = createElement("div", "form__item");
   const labelPurpose = createElement("label");
   const selectPurpose = <HTMLSelectElement>(
     createElement("select", "loan-purpose", "loan-purpose")
   );
-  const forItemCurrency = createElement("div", "form__item");
+  const formItemCurrency = createElement("div", "form__item");
   const labelCurrency = createElement("label");
   const selectCurrency = <HTMLSelectElement>(
     createElement("select", "loan-currency", "loan-currency")
@@ -70,16 +70,16 @@ const createLoanForm = (): HTMLElement => {
 
   for (const key of ["rub", "usd", "eur"]) {
     const option = new Option(key.toUpperCase(), key);
-    if (key === selectedPurpose) option.selected = true;
+    if (key === selectedCurrency) option.selected = true;
     selectCurrency.append(option);
   }
 
   labelPurpose.append(selectPurpose);
-  forItemPurpose.append(labelPurpose);
+  formItemPurpose.append(labelPurpose);
   labelCurrency.append(selectCurrency);
-  forItemCurrency.append(labelCurrency);
-  form.prepend(forItemPurpose);
-  form.append(forItemCurrency);
+  formItemCurrency.append(labelCurrency);
+  form.prepend(formItemPurpose);
+  form.append(formItemCurrency);
   form.append(loanInfo);
 
   selectPurpose.addEventListener("change", (event: Event): void => {
@@ -107,26 +107,24 @@ function renderLoanInfo(
     <div class="form__item">
       <label for="loan-sum">Сумма кредита</label>
       <input class="loan-sum" id="loan-sum" type="number"
-      min="${loans[selectedPurpose][selectedCurrency].minSum}" max="${
-    loans[selectedPurpose][selectedCurrency].maxSum
-  }"
-      placeholder="от ${loans[selectedPurpose][selectedCurrency].minSum} до ${
-    loans[selectedPurpose][selectedCurrency].maxSum
-  }" required>
+        min="${loans[selectedPurpose][selectedCurrency].minSum}"
+        max="${loans[selectedPurpose][selectedCurrency].maxSum}"
+        placeholder="от ${loans[selectedPurpose][selectedCurrency].minSum} до ${loans[selectedPurpose][selectedCurrency].maxSum}"
+        required>
     </div>
     <div class="form__item">
       <label for="loan-term">Срок кредита (в месяцах)</label>
       <input class="loan-term" id="loan-term" type="number"
-        min="${loans[selectedPurpose].minTerm}" max="${
-    loans[selectedPurpose].maxTerm
-  }"
-        placeholder="от ${loans[selectedPurpose].minTerm} до ${
-    loans[selectedPurpose].maxTerm
-  }" required>
+        min="${loans[selectedPurpose].minTerm}"
+        max="${loans[selectedPurpose].maxTerm}"
+        placeholder="от ${loans[selectedPurpose].minTerm} до ${loans[selectedPurpose].maxTerm}"
+        required>
     </div>
-    <div class="loan-rate" id="loan-rate">Годовая ставка: ${
-      loans[selectedPurpose][selectedCurrency].rate
-    }%</div>
+    <div class="form__item">
+      <div class="loan-rate" id="loan-rate">Годовая ставка:
+        ${loans[selectedPurpose][selectedCurrency].rate}%
+      </div>
+    </div>
     <div class="form__item">
       <div class="loan-date" id="loan-date">Дата получения кредита: ${getCurrentDate()}</div>
     </div>
