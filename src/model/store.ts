@@ -11,7 +11,7 @@ export default class Store {
 
   isAuth = false;
 
-  isLoading = false;
+  // isLoading = false;
 
 //   constructor() {
 //     makeAutoObservable(this);
@@ -25,9 +25,9 @@ export default class Store {
     this.user = user;
   }
 
-  setLoading(bool: boolean) {
-    this.isLoading = bool;
-  }
+  // setLoading(bool: boolean) {
+  //   this.isLoading = bool;
+  // }
 
   async login(email: string, password: string) {
     try {
@@ -69,18 +69,20 @@ export default class Store {
   }
 
   async checkAuth() {
-    this.setLoading(true);
+    // this.setLoading(true);
     try {
       const response = await axios.get<IResAuth>(`${API_URL}/refresh`, { withCredentials: true });
       console.log(response);
+
       localStorage.setItem('token', response.data.accessToken);
       this.setAuth(true);
       this.setUser(response.data.user);
     } catch (e) {
       //console.log(e.response?.data?.message);
       console.log(e);
-    } finally {
-      this.setLoading(false);
-    }
+    } 
+    // finally {
+    //   this.setLoading(false);
+    // }
   }
 }
