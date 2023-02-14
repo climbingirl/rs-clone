@@ -28,6 +28,29 @@ export interface CurrencyStateConverter {
   eur: number,
 }
 
+export type purpose = 'any' | 'car' | 'studying' | 'realty';
+
+export type currency = 'rub' | 'usd' | 'eur';
+
+export type ILoan = {
+  [key in currency]: {
+    rate: number;
+    minSum: number;
+    maxSum: number;
+  };
+} & {
+  purpose: string;
+  minTerm: number;
+  maxTerm: number;
+}
+
+export interface IDeposit {
+  term: string;
+  rate: {
+    [key in currency]: number;
+  }
+}
+
 export interface IMetalRes {
     label: string,
     data: number[],
