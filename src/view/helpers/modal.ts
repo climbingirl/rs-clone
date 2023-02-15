@@ -1,23 +1,24 @@
-import createButton from "./elements/button";
 import createElement from "./elements/element";
 
+export const createModal = (idName: string): HTMLElement => {
+  const modal = createElement("div", "modal", idName);
+  const message = createElement("div", "modal__message", "modal__message");
+  const closeBtn = createElement("div", "modal__close-btn", "modal__close-btn");
+  closeBtn.innerHTML = "&#10006;";
 
-const createModal = (idName: string): HTMLElement => {
-  const modal = createElement('div', 'modal', idName);
-  const message = createElement('div', 'modal__message', 'modal__message');
-  const closeBtn = createButton('X', 'modal__close-btn');
-
-  modal.style.display = 'none';
   modal.append(closeBtn);
   modal.append(message);
 
-  closeBtn.addEventListener('click', (event) => {
-    const modal = <HTMLElement>(<HTMLElement>event.target).closest('.modal');
-    modal.style.display = 'none';
-
-  });
+  closeBtn.addEventListener("click", closeModal);
 
   return modal;
 };
 
-export default createModal;
+export const closeModal = (): void => {
+  const modal = <HTMLElement>document.querySelector(".modal.open");
+  const overlay = <HTMLElement>document.getElementById("overlay");
+  const message = <HTMLElement>document.getElementById("modal__message");
+  modal.classList.remove("open");
+  overlay.classList.remove("open");
+  message.innerText = "";
+};
