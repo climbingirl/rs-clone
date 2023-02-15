@@ -21,11 +21,11 @@ export interface IReqCredit {
 }
 
 export interface CurrencyStateConverter {
-  baseCurrency: string,
-  convertCurrency: string,
-  baseQuantity: number,
-  usd: number,
-  eur: number,
+  baseCurrency: string;
+  convertCurrency: string;
+  baseQuantity: number;
+  usd: number;
+  eur: number;
 }
 
 export type purpose = 'any' | 'car' | 'studying' | 'realty';
@@ -52,27 +52,26 @@ export interface IDeposit {
 }
 
 export interface IMetalRes {
-    label: string,
-    data: number[],
-    type: string,
-    dates: string[]
+  label: string;
+  data: number[];
+  type: string;
+  dates: string[];
 }
 
-
 export interface IMetalChartType {
-    label: string,
-    data: number[],
-    //type: string,
+  label: string;
+  data: number[];
+  //type: string,
 }
 
 export type ChartConfig = {
-    type: 'line' | 'bar',
-    data: {
-        datasets: IMetalChartType[],
-        labels: string[]
-    },
-    options?: {}
-}
+  type: 'line' | 'bar';
+  data: {
+    datasets: IMetalChartType[];
+    labels: string[];
+  };
+  options?: {};
+};
 
 /*data: {
         labels: data.map(row => row.year),
@@ -83,3 +82,9 @@ export type ChartConfig = {
           }
         ]
       }*/
+
+export interface IUser {
+  email: string;
+  isActivated: boolean;
+  id: string;
+}
