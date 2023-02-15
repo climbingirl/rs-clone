@@ -9,6 +9,7 @@ import './container.scss';
 const createApp = () => {
   const app = createElement('div', 'app');
   const container = createElement('div', 'container');
+  
   // const header = createHeader();
   // const main = createMain();
   // const sidebar = createSidebar();
