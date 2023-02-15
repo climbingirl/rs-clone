@@ -36,11 +36,11 @@ a {
     width: 100%;
     margin: 0 auto;
     padding: 0 15px;
-    display: flex;
     column-gap: 20px;
     margin-top: 48px;
 
     @media (max-width: $tablet) {
+      display:flex;
         flex-direction: column;
     }
 }

@@ -1,0 +1,7 @@
+.container {
+    display: grid;
+    grid-template-areas: 
+    'head head head'
+    'main main side'
+    'main main side';
+}

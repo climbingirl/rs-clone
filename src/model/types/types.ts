@@ -1,11 +1,12 @@
 export interface IReqCard {
-  type: string;
+  user_id: string;
   name: string;
+  cardType: string;
   date: string;
   currency: string;
   balance: number;
   moneyBack?: number;
-  iban: string;
+  cvv: string;
 }
 
 export interface IReqCredit {

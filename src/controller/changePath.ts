@@ -1,7 +1,7 @@
 import { router } from '../model/router';
 
-const changePath = (e: Event) => {
-  history.pushState('', '', (<HTMLElement>e.target).dataset.path);
+const changePath = (path: string) => {
+  history.pushState('', '', path);
   router();
 };
 
