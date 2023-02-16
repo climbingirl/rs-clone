@@ -8,8 +8,10 @@ const handleCreateCard = async (event: Event): Promise<void> => {
   const form = <HTMLElement>event.target;
   const cardName = <HTMLInputElement>document.getElementById('card-name');
   const cardType = <HTMLSelectElement>document.getElementById('card-type');
-  const cardDate = <HTMLElement>document.getElementById('card-date');
+  const cardCashback = <HTMLElement>document.getElementById('card-cashback__info');
+  const cardDate = <HTMLElement>document.getElementById('card-date__info');
   const cardCurrency = <HTMLInputElement>document.getElementById('card-currency');
+  const message = <HTMLElement>document.getElementById('create-card-modal__message');
 
   const cardData: IReqCard = {
     user_id: importUserId(),
@@ -19,15 +21,13 @@ const handleCreateCard = async (event: Event): Promise<void> => {
     currency: cardCurrency.value.toUpperCase(),
     balance: 0,
     cvv: generateCardCvv(),
-    // moneyBack: 0,
   };
 
-  // if (meneyBackCheckbox.checked) cardData.moneyBack = 0;
+  if (cardCashback.innerText === 'есть') cardData.moneyBack = 0;
   await createItem('cards', cardData);
 
   form.style.display = 'none';
   cardName.value = '';
-  const message = <HTMLElement>document.getElementById('modal__message');
   message.innerText = `Поздравляем вы создали карту ${cardData.name}!`;
 };
 

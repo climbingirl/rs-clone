@@ -1,11 +1,11 @@
 
-import { IResCard, IResCredit } from './types/responceTypes';
-import { IReqCard, IReqCredit } from './types/types';
+import { IResCard, IResCredit, IResDeposit } from './types/responceTypes';
+import { IReqCard, IReqCredit, IReqDeposit } from './types/types';
 import { importUserId } from './userId';
 
 const baseUrl = 'http://localhost:3000';
 
-export const getItems = async (category: string): Promise<Array<IResCard | IResCredit>> => {
+export const getItems = async (category: string): Promise<Array<IResCard | IResCredit | IResDeposit>> => {
   const userId = importUserId();
   const response = await fetch(`${baseUrl}/products/${category}/${userId}`);
   const items = await response.json();
@@ -13,13 +13,13 @@ export const getItems = async (category: string): Promise<Array<IResCard | IResC
   return items;
 };
 
-export const getItem = async (category: string, id: number): Promise<IResCard | IResCredit> => {
+export const getItem = async (category: string, id: number): Promise<IResCard | IResCredit | IResDeposit> => {
   const response = await fetch(`${baseUrl}/products/${category}/${id}`);
   const item = await response.json();
   return item;
 };
 
-export const createItem = async (category: string, body: IReqCard | IReqCredit) => {
+export const createItem = async (category: string, body: IReqCard | IReqCredit | IReqDeposit) => {
   await fetch(`${baseUrl}/products/${category}`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -27,7 +27,7 @@ export const createItem = async (category: string, body: IReqCard | IReqCredit) 
   });
 };
 
-export const updateItem = async (category: string, id: string, body: IReqCard | IReqCredit) => {
+export const updateItem = async (category: string, id: string, body: IReqCard | IReqCredit | IReqDeposit) => {
   await fetch(`${baseUrl}/products/${category}/${id}`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },

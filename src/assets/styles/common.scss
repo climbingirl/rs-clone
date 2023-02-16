@@ -52,13 +52,17 @@ a {
   left: 0;
   right: 0;
   width: 600px;
-  padding: 30px 30px;
+  padding: 35px 40px 30px 20px;
   margin: 0 auto;
   text-align: center;
   box-shadow: 0px 0px 10px 1px rgba($color-grey, 0.25);
   background-color: $color-background;
   border-radius: $border-4;
   z-index: 100;
+
+  &__message {
+    line-height: 35px;
+  }
 
   &__close-btn {
     position: absolute;

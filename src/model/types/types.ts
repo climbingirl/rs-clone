@@ -1,6 +1,5 @@
 export interface IReqCard {
   user_id: string;
-
   cardType: string;
   name: string;
   date: string;
@@ -11,7 +10,7 @@ export interface IReqCard {
 }
 
 export interface IReqCredit {
-  
+  user_id: string;
   name: string; //На недвижимость
   date: string; // 22.12.12
   term: number; // 10 (month)
@@ -19,7 +18,16 @@ export interface IReqCredit {
   currency: string; //USD
   totalSum: number; // 40000
   paid: number; // 200
+}
 
+export interface IReqDeposit {
+  user_id: string;
+  name: string;
+  date: string;
+  term: number;
+  rate: number;
+  currency: string;
+  totalSum: number;
 }
 
 export interface CurrencyStateConverter {
@@ -30,12 +38,14 @@ export interface CurrencyStateConverter {
   eur: number;
 }
 
-export type purpose = 'any' | 'car' | 'studying' | 'realty';
+export type Purpose = 'any' | 'car' | 'studying' | 'realty';
 
-export type currency = 'rub' | 'usd' | 'eur';
+export type Currency = 'rub' | 'usd' | 'eur';
 
-export type ILoan = {
-  [key in currency]: {
+export type CardType = 'RSS Black' | 'RSS Gold' | 'RSS Platinum' | 'RSS Premium';
+
+export type Loan = {
+  [key in Currency]: {
     rate: number;
     minSum: number;
     maxSum: number;
@@ -49,7 +59,7 @@ export type ILoan = {
 export interface IDeposit {
   term: string;
   rate: {
-    [key in currency]: number;
+    [key in Currency]: number;
   };
 }
 
