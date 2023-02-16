@@ -1,4 +1,8 @@
+import changePath from '../../../../controller/changePath';
+import initCurrenciesControls from '../../../../controller/sidebar/currencyConverterController';
+import { initMetalsControls } from '../../../../controller/sidebar/metallsController';
 import Store from '../../../../model/store';
+import { getUserId } from '../../../../model/userId';
 import createButton from '../../../helpers/elements/button';
 import createElement from '../../../helpers/elements/element';
 import createInput from '../../../helpers/elements/input';
@@ -22,7 +26,13 @@ const createLoginPage = () => {
   loginInput.placeholder = 'Email';
   passwordInput.placeholder = 'Password';
 
-  loginBtn.addEventListener('click', () => store.login(loginInput.value, passwordInput.value));
+  loginBtn.addEventListener('click', () => {
+    store.login(loginInput.value, passwordInput.value);
+    getUserId(store.user.id);
+    changePath('/');
+    initCurrenciesControls();
+    initMetalsControls();
+  });
   registrationBtn.addEventListener('click', () => store.registration(loginInput.value, passwordInput.value));
 
   page.appendChild(form);

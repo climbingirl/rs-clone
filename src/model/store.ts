@@ -10,8 +10,7 @@ export default class Store {
   user = {} as IUser;
 
   isAuth = false;
-
-  // isLoading = false;
+  
 
 //   constructor() {
 //     makeAutoObservable(this);

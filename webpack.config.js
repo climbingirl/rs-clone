@@ -14,6 +14,11 @@ const devServer = (isDev) => !isDev ? {} : {
       directory: path.join(__dirname, 'public'),
       publicPath: '/',
     },
+    historyApiFallback: {
+      rewrites: [
+        { from: /./, to: '/index.html' }, // all request to index.html
+      ],
+    },
   },
 };
 

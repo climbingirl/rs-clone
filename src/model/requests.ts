@@ -1,11 +1,15 @@
+
 import { IResCard, IResCredit } from './types/responceTypes';
 import { IReqCard, IReqCredit } from './types/types';
+import { importUserId } from './userId';
 
 const baseUrl = 'http://localhost:3000';
 
 export const getItems = async (category: string): Promise<Array<IResCard | IResCredit>> => {
-  const response = await fetch(`${baseUrl}/products/${category}`);
+  const userId = importUserId();
+  const response = await fetch(`${baseUrl}/products/${category}/${userId}`);
   const items = await response.json();
+  console.log(items);
   return items;
 };
 

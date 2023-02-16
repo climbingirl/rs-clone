@@ -3,11 +3,14 @@ import { IUser } from './types';
 export interface IResCard {
   _id: string;
   type: string;
+  user_id: string;
+  cardType: string;
   name: string;
   date: string;
   currency: string;
   balance: number;
   moneyBack?: number;
+  cvv: string;
   iban: string;
   __v: number;
 }
