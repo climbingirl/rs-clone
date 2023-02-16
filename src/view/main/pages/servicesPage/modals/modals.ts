@@ -1,8 +1,8 @@
-import createElement from "../../../../helpers/elements/element";
-import { createModal } from "../../../../helpers/modal";
-import createCardForm from "./createCard";
-import createDepositForm from "./createDeposit";
-import createLoanForm from "./createLoan";
+import createElement from '../../../../helpers/elements/element';
+import { createModal } from '../../../../helpers/modal';
+import createCardForm from './createCard';
+import createDepositForm from './createDeposit';
+import createLoanForm from './createLoan';
 
 const createModals = (items: object): HTMLElement => {
   const modals = createElement('div', 'madals', 'modals');
@@ -15,6 +15,6 @@ const createModals = (items: object): HTMLElement => {
 
   modals.append(...modalsItem);
   return modals;
-}
+};
 
 export default createModals;

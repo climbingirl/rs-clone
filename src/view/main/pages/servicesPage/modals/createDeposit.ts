@@ -1,6 +1,7 @@
-import { currency, IDeposit } from "../../../../../model/types/types";
-import { getCurrentDate } from "../../../../../model/utils";
-import createElement from "../../../../helpers/elements/element";
+import handleOpenDeposit from '../../../../../controller/services-controllers/deposit-controller';
+import { Currency, IDeposit } from '../../../../../model/types/types';
+import { getCurrentDate } from '../../../../../model/utils';
+import createElement from '../../../../helpers/elements/element';
 
 const deposits: { [key: string]: IDeposit } = {
   1: { term: '1 месяц', rate: { rub: 4.8, usd: 0.1, eur: 0.1 } },
@@ -12,38 +13,33 @@ const deposits: { [key: string]: IDeposit } = {
   36: { term: '3 года', rate: { rub: 7.2, usd: 0.7, eur: 0.7 } },
 };
 
-const minSum: { [key in currency]: number } = {
+const minSum: { [key in Currency]: number } = {
   rub: 100000,
   usd: 1500,
   eur: 1000,
 };
 
-let selectedTerm: number = 1;
-let selectedCurrency: currency = "rub";
+let selectedTerm = 1;
+let selectedCurrency: Currency = 'rub';
 
 const createDepositForm = (): HTMLElement => {
   const form = createElement('form', 'open-deposit-form', 'open-deposit-form');
-  const formItemDepositName = createElement("div", "form__item");
-  const labelDepositName = createElement("label");
-  const depositName = <HTMLInputElement>(
-    createElement("input", "deposit-name", "deposit-name")
-  );
-  const formItemTerm = createElement("div", "form__item");
-  const labelTerm = createElement("label");
-  const selectTerm = <HTMLSelectElement>(
-    createElement("select", "deposit-term", "deposit-term")
-  );
-  const formItemCurrency = createElement("div", "form__item");
-  const labelCurrency = createElement("label");
-  const selectCurrency = <HTMLSelectElement>(
-    createElement("select", "deposit-currency", "deposit-currency")
-  );
-  const depositInfo = createElement("div", "deposit__info", "deposit__info");
+  const formItemDepositName = createElement('div', 'form__item');
+  const labelDepositName = createElement('label');
+  const depositName = <HTMLInputElement>(createElement('input', 'deposit-name', 'deposit-name'));
+  const formItemTerm = createElement('div', 'form__item');
+  const labelTerm = createElement('label');
+  const selectTerm = <HTMLSelectElement>(createElement('select', 'deposit-term', 'deposit-term'));
+  const formItemCurrency = createElement('div', 'form__item');
+  const labelCurrency = createElement('label');
+  const selectCurrency = <HTMLSelectElement>(createElement('select', 'deposit-currency', 'deposit-currency'));
+  const depositInfo = createElement('div', 'deposit__info', 'deposit__info');
 
-  labelDepositName.innerText = 'Название вклада';
-  labelTerm.innerText = 'Срок вклада';
-  labelCurrency.innerText = 'Валюта вклада';
+  labelDepositName.innerText = 'Название вклада ';
+  labelTerm.innerText = 'Срок вклада ';
+  labelCurrency.innerText = 'Валюта вклада ';
   depositName.type = 'text';
+  depositName.placeholder = 'Cберегай';
   depositName.required = true;
   selectTerm.required = true;
   selectCurrency.required = true;
@@ -55,7 +51,7 @@ const createDepositForm = (): HTMLElement => {
     selectTerm.append(option);
   }
 
-  for (const key of ["rub", "usd", "eur"]) {
+  for (const key of ['rub', 'usd', 'eur']) {
     const option = new Option(key.toUpperCase(), key);
     if (key === selectedCurrency) option.selected = true;
     selectCurrency.append(option);
@@ -72,40 +68,42 @@ const createDepositForm = (): HTMLElement => {
   form.append(formItemCurrency);
   form.append(depositInfo);
 
-  selectTerm.addEventListener("change", (event: Event): void => {
+  selectTerm.addEventListener('change', (event: Event): void => {
     const selectedOption = +(<HTMLOptionElement>event.target).value;
     selectedTerm = selectedOption;
-    depositInfo.innerHTML = renderDepositInfo(selectedTerm, selectedCurrency)
+    depositInfo.innerHTML = renderDepositInfo(selectedTerm, selectedCurrency);
   });
 
-  selectCurrency.addEventListener("change", (event: Event): void => {
-    const selectedOption = (<HTMLOptionElement>event.target).value as currency;
+  selectCurrency.addEventListener('change', (event: Event): void => {
+    const selectedOption = <Currency>(<HTMLOptionElement>event.target).value;
     selectedCurrency = selectedOption;
-    depositInfo.innerHTML = renderDepositInfo(selectedTerm, selectedCurrency)
+    depositInfo.innerHTML = renderDepositInfo(selectedTerm, selectedCurrency);
   });
 
-  form.addEventListener('submit', () => {
-    console.log('Create deposit request')
-  });
+  form.addEventListener('submit', handleOpenDeposit);
 
   return form;
-}
+};
 
 function renderDepositInfo(
-  selectedTerm: number,
-  selectedCurrency: currency
+  term: number,
+  currency: Currency,
 ): string {
   return `
     <div class="form__item">
       <label>Сумма вклада</label>
-      <input class="deposit-sum" id="deposit-sum" type="number" min="${minSum[selectedCurrency]}"
-       placeholder="от ${minSum[selectedCurrency]} ${selectedCurrency.toUpperCase()}" required>
+      <input class="deposit-sum" id="deposit-sum" type="number" min="${minSum[currency]}"
+       placeholder="от ${minSum[currency]} ${currency.toUpperCase()}" required>
     </div>
     <div class="form__item">
-      <div class="loan-rate" id="loan-rate">Максимальная ставка: ${deposits[selectedTerm].rate[selectedCurrency]}%</div>
+      <div class="deposit-rate">Максимальная ставка:
+        <span class="loan-rate__info" id="deposit-rate__info">${deposits[term].rate[currency]}</span>%
+      </div>
     </div>
     <div class="form__item">
-      <div class="deposit-date" id="deposit-date">Дата открытия вклада: ${getCurrentDate()}</div>
+      <div class="deposit-date">Дата получения кредита:
+        <span class="deposit-date__info" id="deposit-date__info">${getCurrentDate()}</span>
+      </div>
     </div>
     <button class="form__btn btn-primary">Открыть вклад</button>
   `;

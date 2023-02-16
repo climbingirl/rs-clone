@@ -29,6 +29,19 @@ export interface IResCredit {
   __v: number;
 }
 
+export interface IResDeposit {
+  _id: string;
+  type: string;
+  name: string;
+  date: string;
+  term: number;
+  rate: number;
+  currency: string;
+  totalSum: number;
+  iban: string;
+  __v: number;
+}
+
 export interface IResMoneyAccounts {
   type: string;
   name: string;

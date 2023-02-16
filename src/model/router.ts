@@ -6,6 +6,8 @@ import createMain from '../view/main/createMain';
 import createHeader from '../view/header/createHeader';
 import createSidebar from '../view/right-sidebar/sidebar';
 import createServicesPage from '../view/main/pages/servicesPage/servicesPage';
+import createElement from '../view/helpers/elements/element';
+import { closeModal } from '../view/helpers/modal';
 
 export const router = () => {
   const path = window.location.pathname;
@@ -25,10 +27,13 @@ export const router = () => {
 
       const header = createHeader();
       const sidebar = createSidebar();
+      const overlay = createElement('div', 'overlay', 'overlay');
 
       container.appendChild(main);
       container.insertAdjacentHTML('beforeend', sidebar);
       container.insertAdjacentElement('afterbegin', header);
+      container.append(overlay);
+      overlay.addEventListener('click', closeModal);
     }
 
     main.innerHTML = '';

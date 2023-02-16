@@ -31,7 +31,8 @@
     "no-param-reassign": ["error", {
       "props": false
     }],
-    "@typescript-eslint/no-explicit-any": 2
+    "@typescript-eslint/no-explicit-any": 2,
+    "@typescript-eslint/no-use-before-define": "off"
   },
   "ignorePatterns": ["*config.js"]
 }
