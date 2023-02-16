@@ -1,12 +1,11 @@
 import { createMetalsPage } from '../view/main/pages/metalsPage/metalsChart';
 import createMainPage from '../view/main/pages/mainPage/page';
-import createServicesPage from '../view/main/pages/services/servicesPage';
+
 import createLoginPage from '../view/main/pages/loginPage/loginPage';
 import createMain from '../view/main/createMain';
 import createHeader from '../view/header/createHeader';
 import createSidebar from '../view/right-sidebar/sidebar';
-import initCurrenciesControls from '../controller/sidebar/currencyConverterController';
-import { initMetalsControls } from '../controller/sidebar/metallsController';
+import createServicesPage from '../view/main/pages/servicesPage/servicesPage';
 
 export const router = () => {
   const path = window.location.pathname;

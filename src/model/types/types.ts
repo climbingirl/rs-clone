@@ -1,7 +1,8 @@
 export interface IReqCard {
   user_id: string;
-  name: string;
+
   cardType: string;
+  name: string;
   date: string;
   currency: string;
   balance: number;
@@ -10,7 +11,7 @@ export interface IReqCard {
 }
 
 export interface IReqCredit {
-  type: string; //credit
+  
   name: string; //На недвижимость
   date: string; // 22.12.12
   term: number; // 10 (month)
@@ -18,7 +19,7 @@ export interface IReqCredit {
   currency: string; //USD
   totalSum: number; // 40000
   paid: number; // 200
-  iban: string;
+
 }
 
 export interface CurrencyStateConverter {
@@ -43,13 +44,13 @@ export type ILoan = {
   purpose: string;
   minTerm: number;
   maxTerm: number;
-}
+};
 
 export interface IDeposit {
   term: string;
   rate: {
     [key in currency]: number;
-  }
+  };
 }
 
 export interface IMetalRes {

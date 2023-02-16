@@ -12,7 +12,6 @@ const handleGetLoan = async (event: Event): Promise<void> => {
   const loanSum = <HTMLInputElement>document.getElementById('loan-sum');
 
   const loanData: IReqCredit = {
-    type: 'credit',
     name: loanName.options[loanName.selectedIndex].innerText,
     date: loanDate.innerText,
     term: +loanTerm.value,
@@ -20,7 +19,6 @@ const handleGetLoan = async (event: Event): Promise<void> => {
     currency: loanCurrency.value.toLowerCase(),
     totalSum: +loanSum.value,
     paid: 0,
-    iban: "BY000000001023425",
   };
 
   await createItem('credits', loanData);
@@ -30,6 +28,6 @@ const handleGetLoan = async (event: Event): Promise<void> => {
   loanSum.value = '';
   const message = <HTMLElement>document.getElementById('modal__message');
   message.innerText = `Поздравляем вы получили кредит ${loanData.name} на сумму ${loanData.totalSum} рублей!`;
-}
+};
 
 export default handleGetLoan;
