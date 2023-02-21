@@ -100,3 +100,10 @@ export interface IUser {
   isActivated: boolean;
   id: string;
 }
+
+
+export interface IContactsData {
+    name: string,
+    gitLink: string,
+    telegramLink: string
+}

@@ -1,0 +1,90 @@
+@keyframes floating {
+	 0% {
+		 transform: translateY(0);
+	}
+	 100% {
+		 transform: translateY(20px);
+	}
+}
+@keyframes belpping {
+	 0% {
+		 opacity: 0.3;
+	}
+	 100% {
+		 opacity: 0.1;
+	}
+}
+
+@keyframes line-ani {
+  to {
+    stroke-dashoffset: 0;
+  } 
+}
+
+@keyframes opacity {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: .5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes list-animation {
+   from {
+      opacity: 0;
+      transform: translateX(-5rem);
+   }
+
+   to {
+      opacity: 1;
+      transform: translateX(0);
+   }
+}
+
+@keyframes sun-glow { 
+    0% { fill: #f1c40f; }
+    75% { fill: #e67e22; }
+    100% { fill: #f1c40f; }
+}
+
+@keyframes fadeIn {
+	from { opacity: 0; }
+	to { opacity: 1; }
+}
+
+@keyframes shakeChestBottom {
+	0% { transform: translateY(0) rotate(0deg) }
+	15% { transform: translateY(-5px) rotate(-2deg) }
+	25% { transform: translateY(-10px) rotate(0deg) }
+	60% { transform: translateY(0) rotate(0deg) }
+}
+
+@keyframes shakeChestTop {
+	0% { transform: translateY(0) rotate(0deg) }
+	15% { transform: translateY(-10px) rotate(2deg) }
+	25% { transform: translateY(-20px) rotate(-2deg) }
+	35% { transform: translateY(-20px) rotate(2deg) }
+	60% { transform: translateY(0) rotate(0deg) }
+}
+
+@keyframes openLock {
+	0% { transform: rotate(0deg) scale(1); opacity: 1 }
+	8% { transform: rotate(4deg) scale(1); opacity: 1 }
+	17% { transform: rotate(-6deg) scale(1); opacity: 1 }
+	24% { transform: rotate(5deg) scale(1); opacity: 1 }
+	30% { transform: rotate(-8deg) scale(1); opacity: 1 }
+	45% { transform: rotate(-8deg) scale(2); opacity: 0 }
+	100% { transform: rotate(0deg) scale(2); opacity: 0 }
+}
+
+@keyframes openChestTop {
+	0% { transform: translateY(0); opacity: 1; }
+	35% { transform: translateY(0); opacity: 1; }
+	45% { transform: translateY(-8%); opacity: 1; }
+	75% { transform: translateY(-20%); opacity: 0; }
+	100% { transform: translateY(-20%); opacity: 0; }
+}

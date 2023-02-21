@@ -11,14 +11,16 @@ import { closeModal } from '../view/helpers/modal';
 
 export const router = () => {
   const path = window.location.pathname;
+    const app = document.querySelector('.app')
   const container = document.querySelector('.container');
   if (!container) return;
 
-  if (path === '/login') {
-    container.innerHTML = '';
+  if (path === '/login' && app) {
+    // container.innerHTML = '';
 
     const loginPage = createLoginPage();
-    container.appendChild(loginPage);
+    app.appendChild(loginPage);
+    app.removeChild(container)
   } else {
     let main = document.querySelector('.main');
     if (!main) {
