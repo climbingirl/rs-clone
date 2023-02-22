@@ -66,6 +66,7 @@
     background-color: black;
 
     &__container {
+        cursor: pointer;
         display: grid;
         grid-template-columns: repeat(15, 20px);
         grid-template-rows: repeat(20, 20px); 
@@ -122,12 +123,12 @@
   stroke-width: 1px;
   stroke-dasharray: 400;
   stroke-dashoffset: 400;
-  
 }
 
 .card {
     z-index: 1;
-    padding-bottom: 32px;
+    padding-bottom: 36px;
+    cursor: pointer;
     
     &__wr {
         position: relative;
@@ -140,7 +141,7 @@
 
             }
             img {
-                animation: opacity 2s ease 3s forwards;
+                animation: fadeIn 2s ease 3s forwards;
             }
             .el__container::after {
                 display: none;
@@ -184,36 +185,6 @@
 
 .about {
     background: linear-gradient(90deg, rgba(5, 117, 230, 1) 0%, rgba(2, 27, 121, 1) 100%);
-
-    &__list {
-        list-style-type: none;
-    }
-
-    &__item {
-        &:nth-child(1) {
-            --number1: 0;
-        }
-        &:nth-child(2) {
-            --number1: 1;
-        }
-        &:nth-child(3) {
-            --number1: 2;
-        }
-        &:nth-child(4) {
-            --number1: 3;
-        }
-        &:nth-child(5) {
-            --number1: 4;
-        }
-        &:nth-child(6) {
-            --number1: 5;
-        }
-        opacity: 0;
-        --delay: calc(var(--number1)* 0.1s);
-        animation: list-animation 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) var(--delay) forwards;
-        
-    }
-
 }
 
 .wave {
@@ -323,7 +294,14 @@
 }
 
 
-#sun {
+.sun {
+    background: yellow;
+    position: absolute;
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    right: 20%;
+    top: 10%;
     animation: sun-glow 10s linear infinite ;
 }
 
@@ -370,6 +348,7 @@
     position: absolute;
     bottom: 4%;
     left: calc((100vw - 400px) / 2);
+    cursor: pointer;
 }
 
 #chest-wrap {
@@ -378,6 +357,7 @@
     position: absolute;
     bottom: 4%;
     left: calc((100vw - 400px) / 2);
+
 }
 
 #chest {
@@ -694,10 +674,11 @@
     left: calc((100vw - 400px) / 2);
     padding: 48px;
     background: white;
-    transform: translateX(-2500px);
+    opacity: 0;
     &.active {
-        transform: translateX(0);
+        animation: fadeIn .5s 1.8s ease forwards;
     }
+    
 }
 
 .input {
@@ -727,6 +708,24 @@
     margin-right: 16px;
     &:hover {
         background: #1E90FF;
+    }
+}
+
+.clouds {
+    position: relative;
+    height: 100%;
+    background: url(https://static.radulescu.me/examples/clouds/clouds1000.png);
+    background: url(https://static.radulescu.me/examples/clouds/clouds1000.png) 0 100px,
+                url(https://static.radulescu.me/examples/clouds/clouds1200_1.png) 0 150px,
+                url(https://static.radulescu.me/examples/clouds/clouds1000_blur3.png) 50px 175px;
+        animation: wind 20s linear infinite;
+    &__wr {
+        width: 300%;
+        position: absolute;
+        left: -100%;
+        overflow: hidden;
+        height: 52%;
+        top: -8%;
     }
 }
 

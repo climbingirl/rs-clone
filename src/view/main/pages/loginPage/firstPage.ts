@@ -3,7 +3,6 @@ import { contactsEvgeniya, contactsSvatlana, itemsForList, svgEvgeniya, svgSvetl
 import createElement from "../../../helpers/elements/element";
 import './login.scss';
 import Parallax from 'parallax-js';
-import anime from 'animejs/lib/anime.es.js';
 import createInput from "../../../helpers/elements/input";
 import createButton from "../../../helpers/elements/button";
 import Store from "../../../../model/store";
@@ -251,94 +250,19 @@ export const createLoginAppBlock = () => {
     `)
     treasure.append(box)
 
-    const li4 = createElement('li', 'layer')
-    li4.dataset.depth = '0.6'
-    const scene = createElement('div', 'scene');
-    scene.dataset.depth = '0.6';
-    scene.insertAdjacentHTML('afterbegin', `
-        <svg width="1800" height="1090" viewBox="0 0 1800 1090" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g mask="url(#mask0_533_79)">
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M154 180.847C161.901 166.646 177.43 157 195.139 157C221.022 157 242 177.364 242 202.818C242 206.301 241.455 209.785 240.91 213" fill="white"/>
-            <path d="M156.003 179.271C163.208 165.742 177.369 156.553 193.517 156.553C217.119 156.553 236.248 175.953 236.248 200.203C236.248 203.521 235.751 206.84 235.254 209.903" stroke="white" stroke-width="2"/>
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M236.759 194.039C239.492 193.018 242.473 192.763 245.455 192.763C260.609 192.763 273.031 205.271 273.031 220.842C273.031 236.413 260.609 248.921 245.455 248.921H152.788C134.155 248.921 119 233.35 119 214.461C119 195.316 134.155 180 152.788 180C161.483 180 169.433 183.318 175.395 188.679" fill="white"/>
-            <path d="M237.244 193.566C239.977 192.545 242.958 192.29 245.939 192.29C261.094 192.29 273.516 204.797 273.516 220.368C273.516 235.94 261.094 248.447 245.939 248.447H153.272C134.639 248.447 119.484 232.876 119.484 213.987C119.484 194.842 134.639 179.526 153.272 179.526C161.967 179.526 169.917 182.845 175.88 188.205" stroke="white" stroke-width="2"/>
-            </g>
-            <g clip-path="url(#clip2_533_79)">
-            <mask id="mask1_533_79" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="1603" y="57" width="134" height="89">
-            <path d="M1737 57H1603V146H1737V57Z" fill="white"/>
-            </mask>
-            <g mask="url(#mask1_533_79)">
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M1634 80.9952C1640.73 67.3014 1653.97 58 1669.06 58C1691.12 58 1709 77.6364 1709 102.182C1709 105.541 1708.54 108.9 1708.07 112" fill="white"/>
-            <path d="M1635.87 80.1865C1641.94 67.7734 1653.88 59.3418 1667.49 59.3418C1687.38 59.3418 1703.5 77.1418 1703.5 99.3918C1703.5 102.437 1703.08 105.481 1702.66 108.292" stroke="white" stroke-width="2"/>
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M1704.34 93.3025C1706.64 92.3656 1709.15 92.1314 1711.67 92.1314C1724.44 92.1314 1734.91 103.608 1734.91 117.895C1734.91 132.181 1724.44 143.658 1711.67 143.658H1633.57C1617.87 143.658 1605.09 129.371 1605.09 112.039C1605.09 94.4735 1617.87 80.4209 1633.57 80.4209C1640.9 80.4209 1647.6 83.4656 1652.62 88.3841" fill="white"/>
-            <path d="M1704.34 93.3025C1706.64 92.3656 1709.15 92.1314 1711.67 92.1314C1724.44 92.1314 1734.91 103.608 1734.91 117.895C1734.91 132.181 1724.44 143.658 1711.67 143.658H1633.57C1617.87 143.658 1605.09 129.371 1605.09 112.039C1605.09 94.4735 1617.87 80.4209 1633.57 80.4209C1640.9 80.4209 1647.6 83.4656 1652.62 88.3841" stroke="white" stroke-width="2"/>
-            </g>
-            </g>
-            <g clip-path="url(#clip4_533_79)">
-            <mask id="mask2_533_79" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="857" y="42" width="241" height="149">
-            <path d="M1098 42H857V191H1098V42Z" fill="white"/>
-            </mask>
-            <g mask="url(#mask2_533_79)">
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M912 85.0861C923.672 66.5742 946.613 54 972.774 54C1011.01 54 1042 80.5455 1042 113.727C1042 118.268 1041.2 122.809 1040.39 127" fill="white"/>
-            <path d="M919 89.8974C929.92 69.1158 951.384 55 975.861 55C1011.63 55 1040.63 84.8 1040.63 122.05C1040.63 127.147 1039.88 132.245 1039.12 136.95" stroke="white" stroke-width="2"/>
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M1039.26 102.776C1043.4 101.207 1047.92 100.815 1052.44 100.815C1075.41 100.815 1094.23 120.028 1094.23 143.947C1094.23 167.865 1075.41 187.078 1052.44 187.078H911.978C883.736 187.078 860.766 163.16 860.766 134.144C860.766 104.736 883.736 81.21 911.978 81.21C925.158 81.21 937.208 86.3073 946.245 94.5415" fill="white"/>
-            <path d="M1039.26 102.776C1043.4 101.207 1047.92 100.815 1052.44 100.815C1075.41 100.815 1094.23 120.028 1094.23 143.947C1094.23 167.865 1075.41 187.078 1052.44 187.078H911.978C883.736 187.078 860.766 163.16 860.766 134.144C860.766 104.736 883.736 81.21 911.978 81.21C925.158 81.21 937.208 86.3073 946.245 94.5415" stroke="white" stroke-width="2"/>
-            </g>
-            </g>
-            <path d="M740.146 402.733H479.845C430.858 402.733 391 373.522 391 337.628C391 305.483 422.12 278.838 464.545 273.523C468.357 243.976 502.173 220.961 543.172 220.961C555.844 220.961 568.188 223.166 579.33 227.378C601.528 203.558 638.681 189 678.236 189C744.303 189 798.037 228.379 798.037 276.786C798.037 280.283 797.699 283.875 797.025 287.689C817.417 300.112 829 318.104 829 337.629C828.991 373.522 789.124 402.733 740.146 402.733Z" fill="white"/>
-            <circle id="sun" cx="1400" cy="215" r="127" fill="#F5CB02"/>
-            <defs>
-            <filter id="filter0_d_533_79" x="722.816" y="712" width="409.184" height="298" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-            <feOffset dy="4"/>
-            <feGaussianBlur stdDeviation="2"/>
-            <feComposite in2="hardAlpha" operator="out"/>
-            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
-            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_533_79"/>
-            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_533_79" result="shape"/>
-            </filter>
-            <clipPath id="clip0_533_79">
-            <rect width="159" height="97" fill="white" transform="translate(117 154)"/>
-            </clipPath>
-            <clipPath id="clip1_533_79">
-            <rect width="40" height="40" fill="white" transform="translate(171 182)"/>
-            </clipPath>
-            <clipPath id="clip2_533_79">
-            <rect width="134" height="89" fill="white" transform="translate(1603 57)"/>
-            </clipPath>
-            <clipPath id="clip3_533_79">
-            <rect width="40" height="40" fill="white" transform="translate(1658 85)"/>
-            </clipPath>
-            <clipPath id="clip4_533_79">
-            <rect width="241" height="149" fill="white" transform="translate(857 42)"/>
-            </clipPath>
-            <clipPath id="clip5_533_79">
-            <rect width="40" height="40" fill="white" transform="translate(894 104)"/>
-            </clipPath>
-            <clipPath id="clip6_533_79">
-            <rect width="40" height="40" fill="white" transform="translate(1015 125)"/>
-            </clipPath>
-            <clipPath id="clip7_533_79">
-            <rect width="40" height="40" fill="white" transform="translate(962 78)"/>
-            </clipPath>
-            <clipPath id="clip8_533_79">
-            <rect width="40" height="40" fill="white" transform="translate(499 296)"/>
-            </clipPath>
-            <clipPath id="clip9_533_79">
-            <rect width="40" height="40" fill="white" transform="translate(644 246)"/>
-            </clipPath>
-            <clipPath id="clip10_533_79">
-            <rect width="40" height="40" fill="white" transform="translate(590 334)"/>
-            </clipPath>
-            <clipPath id="clip11_533_79">
-            <rect width="40" height="40" fill="white" transform="translate(745 306)"/>
-            </clipPath>
-            </defs>
-        </svg>
+    const li6 = createElement('li', 'layer')
+    li6.dataset.depth = '0.4'
+    const sun = createElement('div', 'sun');
+    sun.dataset.depth = '0.4';
+    li6.append(sun)    
 
-    `)
-    li4.append(scene)
+    const li5 = createElement('li', 'layer')
+    li5.dataset.depth = '0.6'
+    const clouds = createElement('div', 'clouds__wr');
+    clouds.dataset.depth = '0.6';
+    const inClouds = createElement('div', 'clouds')
+    clouds.append(inClouds)
+    li5.append(clouds)
 
     const formAuth = createElement('div', 'auth')
     const store = new Store();
@@ -369,7 +293,7 @@ export const createLoginAppBlock = () => {
     formAuth.appendChild(passwordInput);
     formAuth.appendChild(loginBtn);
     formAuth.appendChild(registrationBtn);
-    ul.append( li, li3,treasure, li4, li2 , )
+    ul.append( li, li3,treasure, li6, li5, li2 , )
     const boxClick = createElement('div', 'box-click')
     loginBlock.append( ul, boxClick, formAuth)
     const parallaxInstance = new Parallax(ul, {
@@ -387,7 +311,6 @@ export const createLoginAppBlock = () => {
         })
     })
 
-    
     return loginBlock
         
 }
@@ -395,7 +318,7 @@ export const createLoginAppBlock = () => {
 export const createSecondScreen = () => {
     const nextScreen = createElement('div', 'second-screen');
     const secWr = createElement('div', 'second-screen__container')
-    const title = createElement('h2', 'second-screen')
+    const title = createElement('h2', 'second-screen__title')
     title.textContent = 'Команда'
     const cardWr = createElement('div','second-screen__wr' )
     const card1 = createCard('1', svgEvgeniya, 'https://ltdfoto.ru/images/2023/02/17/devbublik.jpg', contactsEvgeniya)
@@ -417,7 +340,7 @@ export const createSecondScreen = () => {
                 elems.forEach((elem, ind) => {
                     let random = Math.floor(Math.random()*10)
                     let delay = ind * 0.001* random;
-                    (elem as HTMLElement).style.animation = `opacity .1s ease ${String(delay)}s reverse forwards`;
+                    (elem as HTMLElement).style.animation = `fadeIn .1s ease ${String(delay)}s reverse forwards`;
                     setTimeout(() => {
                         elContainer?.classList.add('hide')
                     }, 2500)

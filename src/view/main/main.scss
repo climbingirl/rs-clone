@@ -8,4 +8,8 @@
     @media (max-width: $tablet) {
         width: 100%;
     }
+
+    canvas {
+        max-width: auto;
+    }
 }

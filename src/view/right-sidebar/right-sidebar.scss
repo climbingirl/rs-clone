@@ -1,7 +1,6 @@
 .right-sidebar {
     grid-area: side;
     width: 100%;
-    background: $color-background;
 
     @media (max-width: $tablet) {
         width: 100%;
