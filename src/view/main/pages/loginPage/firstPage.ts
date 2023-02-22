@@ -1,5 +1,5 @@
 import { IContactsData } from "../../../../model/types/types";
-import { contactsEvgeniya, contactsSvatlana, itemsForList, svgEvgeniya, svgSvetlana } from "../../../../static/constants";
+import { contactsAnton, contactsEvgeniya, contactsSvatlana, itemsForList, svgAnton, svgEvgeniya, svgSvetlana } from "../../../../static/constants";
 import createElement from "../../../helpers/elements/element";
 import './login.scss';
 import Parallax from 'parallax-js';
@@ -196,11 +196,13 @@ const createCard = (dataSet: string, svg: string, photoLink: string, contactsDat
     link.href = contactsData.gitLink
     link.classList.add('card__link')
     link.textContent= 'Github'
+    link.target="_blank"
     git.append(link)
     const tel= createElement('li', 'card__li')
     const linkForTel = document.createElement('a')
     linkForTel.href = contactsData.telegramLink
     linkForTel.textContent='Telegram'
+    linkForTel.target="_blank"
     linkForTel.classList.add('card__link')
     tel.append(linkForTel)
     name.textContent=contactsData.name;
@@ -217,7 +219,6 @@ const createCard = (dataSet: string, svg: string, photoLink: string, contactsDat
 
 export const createLoginAppBlock = () => {
     const loginBlock = createElement('div', 'about', 'about');
-
     const ul = createElement('ul', 'scene')
     const li = createElement('li', 'layer')
     const wave1 = createElement('div', 'wave');
@@ -236,7 +237,7 @@ export const createLoginAppBlock = () => {
     const li3 = createElement('li', 'layer')
     li3.dataset.depth = '0.4'
     const wave3 = createElement('div', 'wave');
-    wave3.classList.add('wave__30')
+    wave3.classList.add('wave__third')
     wave3.dataset.depth = '0.4'
     li3.append(wave3)
 
@@ -322,9 +323,9 @@ export const createSecondScreen = () => {
     title.textContent = 'Команда'
     const cardWr = createElement('div','second-screen__wr' )
     const card1 = createCard('1', svgEvgeniya, 'https://ltdfoto.ru/images/2023/02/17/devbublik.jpg', contactsEvgeniya)
+    const card3 = createCard('3', svgAnton, 'https://ltdfoto.ru/images/2023/02/22/anton.jpg', contactsAnton)
     const card2 = createCard('2', svgSvetlana, 'https://ltdfoto.ru/images/2023/02/21/sveta.jpg',contactsSvatlana)
-    //const card3 = createCard('3')
-    cardWr.append(card1, card2)
+    cardWr.append(card1,card3, card2)
     nextScreen.append(cardWr)  
     secWr.append(title, cardWr)
     nextScreen.append(secWr)

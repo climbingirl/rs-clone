@@ -8,10 +8,10 @@ const createLoginPage = () => {
     const page = createElement('div', 'registration-page');
     const fistScreen = createFirstScreen()
     const secondScreen = createSecondScreen()
-    const aboutBlock = createLoginAppBlock()
-    // page.append(fistScreen)
-    // page.append(secondScreen)
-    page.append(aboutBlock)
+    const loginBlock = createLoginAppBlock()
+    page.append(fistScreen)
+    page.append(secondScreen)
+    page.append(loginBlock)
 
     return page;
 };

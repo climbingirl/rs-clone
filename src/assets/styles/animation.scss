@@ -140,3 +140,22 @@
         opacity: 1;
     }
 }
+
+@keyframes wave {
+  0% {
+    transform: rotateZ(0deg) translate3d(0,10%,0) rotateZ(0deg); }
+  100% {
+    transform: rotateZ(360deg) translate3d(0,10%,0) rotateZ(-360deg); } 
+}
+
+@keyframes wave-boat {
+  0% {
+    transform: rotateZ(-3deg) ; 
+    }
+    50% {
+    transform: rotateZ(0deg);
+    }
+  100% {
+    transform: rotateZ(3deg);
+     } 
+}
