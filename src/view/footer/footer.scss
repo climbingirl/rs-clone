@@ -1,0 +1,15 @@
+.footer {
+    padding: 24px 0;
+    display: flex;
+    justify-content: space-between;
+    flex: 0 0 auto;
+    align-items: center;
+
+    &__svg {
+        width: 100px;
+    }
+
+    &__link {
+        margin-left: 8px;
+    }
+}

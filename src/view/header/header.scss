@@ -1,11 +1,11 @@
 .header {
-    height: 63px;
     display: flex;
     max-width: 1360px;
     width: 100%;
     margin: 0 auto;
     align-items: center;
     grid-area: head;
+    padding: 24px 0;
 
     &__logo {
         width: 100%;

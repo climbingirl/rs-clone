@@ -1,10 +1,7 @@
 import createApp from './view/app';
-//import initCurrenciesControls from './controller/sidebar/currencyConverterController';
-import './assets/styles/normalize.css';
 import './assets/styles/common.scss';
-//import { initMetalsControls } from './controller/sidebar/metallsController';
+import './assets/styles/normalize.css';
 import { router } from './model/router';
-//import Store from './model/store';
 
 const root = document.querySelector('#root');
 const app = createApp();

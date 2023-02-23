@@ -51,6 +51,7 @@ export const makeConfig = (data: IMetalRes[], dates?: string[]) => {
           },
         },
       },
+        responsive: true,
     },
   };
   return config;
