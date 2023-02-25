@@ -13,12 +13,12 @@ export let currencyConverterState = {
 }
 
 const updateCurrencyTable = (currencies: CurrencyStateConverter) => {
-    for (let currencyName in currencies) { 
+    for (let currencyName in currencies) {
         const salePrice = document.querySelector(`.currency-table__item[data-currency=${currencyName}] > .currency-table_sale`)
         const buyPrice = document.querySelector(`.currency-table__item[data-currency=${currencyName}] > .currency-table_buy`)
         if (salePrice && buyPrice) {
             salePrice.textContent = String(Number(currencies.usd).toFixed(2))
-            buyPrice.textContent = String(Number(currencies.usd * K_INCREASE).toFixed(2)) 
+            buyPrice.textContent = String(Number(currencies.usd * K_INCREASE).toFixed(2))
         }
     }
 }
@@ -45,7 +45,7 @@ const getCurrencyRatio = () => {
             let convertPrice = findPrice(convertCurr);
             rightK = basePrice / convertPrice
             reverseK = convertPrice / basePrice
-            break 
+            break
     }
     return {rightK, reverseK}
 }
@@ -53,7 +53,7 @@ const getCurrencyRatio = () => {
 const updateConverterQuantuty = () => {
     const base: HTMLInputElement | null = document.querySelector('#base-quantity')
     const result: HTMLInputElement | null = document.querySelector('#result-quantity')
-    const strightKEl = document.getElementById('stright-k')   
+    const strightKEl = document.getElementById('stright-k')
     const reverseKEl = document.getElementById('reverse-k')
     const baseCurr = document.getElementById('base-currency');
     const baseCurrTo = document.getElementById('base-currency__to');
@@ -101,11 +101,11 @@ const findPrice = (nameCurr: string) => {
 
 const setActiveConverterBaseBtns = () => {
     const convertBaseBtns = document.querySelectorAll('.converter-block__btn_base');
-    
+
     if (convertBaseBtns) {
         convertBaseBtns.forEach((btn) => {
             btn.addEventListener('click', () => {
-                const dataCurrency = btn.getAttribute('data-currency');              
+                const dataCurrency = btn.getAttribute('data-currency');
                 if (dataCurrency) {
                     currencyConverterState.baseCurrency = dataCurrency
                     const curr = currencyConverterState.baseCurrency
@@ -143,6 +143,6 @@ export const initCurrenciesControls = async () => {
     setActiveConverterGetBtns()
     updateConverterQuantuty()
     listenInpQuantity()
-    
+
 }
 export default initCurrenciesControls;

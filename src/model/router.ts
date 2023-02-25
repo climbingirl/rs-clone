@@ -8,6 +8,7 @@ import createSidebar from '../view/right-sidebar/sidebar';
 import createServicesPage from '../view/main/pages/servicesPage/servicesPage';
 import createElement from '../view/helpers/elements/element';
 import { closeModal } from '../view/helpers/modal';
+import createTransfersPage from '../view/main/pages/transfersPage/transfersPage';
 
 export const router = () => {
   const path = window.location.pathname;
@@ -44,6 +45,9 @@ export const router = () => {
     } else if (path === '/services') {
       const servicesPage = createServicesPage();
       main.append(servicesPage);
+    } else if (path === '/transfers') {
+      const transfersPage = createTransfersPage();
+      main.append(transfersPage);
     } else if (path === '/metals') {
       const metalsPage = createMetalsPage();
       main.append(metalsPage);

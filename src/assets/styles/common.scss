@@ -135,10 +135,10 @@ a {
     }
 }
 
-.btn-primary {
+.btn-primary{
   font-size: 18px;
   background: rgba($color-green-light, 0.8);
-  border: 1px solid #343a40;
+  border: 1px solid $color-green;
   border-radius: 4px;
   padding: 4px 8px;
   text-transform: uppercase;

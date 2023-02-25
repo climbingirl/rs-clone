@@ -1,13 +1,14 @@
-.services {
+.transfers {
   border-radius: $border-8;
   font-size: 20px;
   color: $color-grey;
 
   &__inner {
-    padding: 20px 0;
+    padding: 20px 0 50px;
     display: flex;
     flex-wrap: wrap;
     row-gap: 30px;
+    border-bottom: 1px solid rgba($color-grey, 0.1);
   }
 
   &__item {
@@ -32,26 +33,31 @@
       color: $color-green-light;
     }
   }
+}
 
-  .form {
-    &__item {
-      margin: 15px 0;
+.details {
+  padding: 50px 0 20px;
+  font-size: 20px;
+  color: #343a40;
 
-      select,
-      input {
-        color: $color-green;
-      }
+  label {
+    display: block;
+  }
 
-      input.loan-sum {
-        width: 45%;
-      }
-      input.loan-term {
-        width: 24%;
-      }
-    }
+  select {
+    display: block;
+    margin: 10px 0 35px;
+    width: 80%;
+  }
 
-    &__btn {
-      margin-top: 20px;
-    }
+  button.form__btn {
+    font-size: 20px;
+  }
+
+  .transfer-card-message {
+    margin: 20px 0;
+    min-height: 25px;
+    color: $color-red;
+    font-style: italic;
   }
 }

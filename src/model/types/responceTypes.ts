@@ -18,6 +18,7 @@ export interface IResCard {
 export interface IResCredit {
   _id: string;
   type: string; //Credit
+  user_id: string;
   name: string; //На недвижимость
   date: string; // 22.12.12
   term: number; // 10 (month)
@@ -32,6 +33,7 @@ export interface IResCredit {
 export interface IResDeposit {
   _id: string;
   type: string;
+  user_id: string;
   name: string;
   date: string;
   term: number;
