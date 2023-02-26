@@ -34,7 +34,7 @@ const createTransfersCardDetails = (tarnsferIdName: string, cards: IResCard[]): 
   cardFromSelect.prepend(new Option('Выберите карту', 'choos-card', true, true));
   cardToSelect.prepend(new Option('Выберите карту', 'choos-card', true, true));
 
-  inputSum.type = 'number';
+  inputSum.type = 'text';
   inputSum.placeholder = `не менее ${minSum.rub}`;
   inputSum.required = true;
   currencySpan.innerText = ' RUB';
