@@ -1,19 +1,29 @@
-
 import { IResCard, IResCredit, IResDeposit } from './types/responceTypes';
 import { IReqCard, IReqCredit, IReqDeposit } from './types/types';
 import { importUserId } from './userId';
 
+export enum Categoryes {
+  Cards = 'cards',
+  Credits = 'credits',
+  Deposits = 'deposits',
+}
+
+// export enum CategoryesBody {
+//   Cards = IReqCard,
+//   Credits = 'credits',
+//   Deposits = 'deposits',
+// }
+
 const baseUrl = 'http://localhost:3000';
 
-export const getItems = async (category: string): Promise<Array<IResCard | IResCredit | IResDeposit>> => {
+export const getItems = async <T>(category: Categoryes): Promise<Array<T>> => {
   const userId = importUserId();
   const response = await fetch(`${baseUrl}/products/${category}/${userId}`);
   const items = await response.json();
-  console.log(items);
   return items;
 };
 
-export const getItem = async (category: string, id: number): Promise<IResCard | IResCredit | IResDeposit> => {
+export const getItem = async <T>(category: Categoryes, id: number): Promise<T> => {
   const response = await fetch(`${baseUrl}/products/${category}/${id}`);
   const item = await response.json();
   return item;
@@ -27,7 +37,11 @@ export const createItem = async (category: string, body: IReqCard | IReqCredit |
   });
 };
 
-export const updateItem = async (category: string, id: string, body: IReqCard | IReqCredit | IReqDeposit) => {
+export const updateItem = async (
+  category: Categoryes,
+  id: string,
+  body: IReqCard | IReqCredit | IReqDeposit,
+) => {
   await fetch(`${baseUrl}/products/${category}/${id}`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
