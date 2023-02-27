@@ -4,6 +4,7 @@ import createElement from '../../../../helpers/elements/element';
 import getLastCardFigures from '../../../../../controller/cardNumber/getLastCardFigures';
 import createButton from '../../../../helpers/elements/button';
 import handlePayLoan from '../../../../../controller/transfers-controllers/pay-loan-controller';
+import payLoanValidation from './pay-load-validation';
 
 const minSum: {
   [key in Currency]: number;
@@ -36,7 +37,6 @@ const createPayLoanDetails = (tarnsferIdName: string, cards: IResCard[], loans: 
 
   inputSum.type = 'text';
   inputSum.placeholder = `не менее ${minSum.rub}.00`;
-  inputSum.required = true;
   currencySpan.innerText = ' RUB';
   labelCard.innerText = 'С карты';
   labelLoan.innerText = 'В счёт кредита';
@@ -54,6 +54,11 @@ const createPayLoanDetails = (tarnsferIdName: string, cards: IResCard[], loans: 
   loanSelect.addEventListener('change', (e: Event): void => {selectedloan = setSelectedLoan(e, loans);});
   form.addEventListener('submit', (e: Event) => submitForm(e, errorMessage,
     selectedCard, selectedloan, +inputSum.value));
+  inputSum.addEventListener('input', (e: Event) => {
+    const input = <HTMLInputElement>e.target;
+    input.value = input.value.replace(/[^\d\\.]/g, '');
+  });
+
   return transfersCardDetails;
 };
 
@@ -106,10 +111,10 @@ function getDebtSum(loan: IResCredit): number {
 function submitForm(e: Event, errorMessage: HTMLElement,
   card: IResCard | undefined, loan: IResCredit | undefined, sum: number) {
   e.preventDefault();
-  if (card && loan) handlePayLoan(card, loan, sum);
-
-  // проверка выбора селектов, баланса на карте и суммы перевода, долга и суммы перевода
-  // в десятичной части суммы должно быть не больше двух чисел
+  if (payLoanValidation(e, card, loan, sum, minSum)) {
+    if (card && loan) handlePayLoan(card, loan, sum);
+  }
+  // проверка суммы долга и суммы перевода
 }
 
 export default createPayLoanDetails;

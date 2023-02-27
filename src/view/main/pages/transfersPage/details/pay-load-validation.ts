@@ -1,38 +1,42 @@
-import { IResCard } from '../../../../../model/types/responceTypes';
+import { IResCard, IResCredit } from '../../../../../model/types/responceTypes';
 import { Currency } from '../../../../../model/types/types';
 import createElement from '../../../../helpers/elements/element';
 
-function transferCardValidation(e: Event, cardFrom: IResCard | undefined,
-  cardTo: IResCard | undefined, sum: number, minSumValues: { [key in Currency]: number; }): boolean {
+function payLoanValidation(e: Event, card: IResCard | undefined,
+  loan: IResCredit | undefined, sum: number, minSumValues: { [key in Currency]: number; }): boolean {
   let isValid = true;
   const form = <HTMLFormElement>e.target;
   let errorMessage = '';
 
-  const cardFromSelect = <HTMLSelectElement>form.querySelector('.card-select__from');
-  const cardToSelect = <HTMLSelectElement>form.querySelector('.card-select__to');
-  const sumInput = <HTMLInputElement>form.querySelector('.transfer-card-sum');
-  const errorMessageEl = <HTMLElement>form.querySelector('.transfer-card-message');
+  const cardSelect = <HTMLSelectElement>form.querySelector('.card-select');
+  const loanSelect = <HTMLSelectElement>form.querySelector('.loan-select');
+  const sumInput = <HTMLInputElement>form.querySelector('.pay-loan-sum');
+  const errorMessageEl = <HTMLElement>form.querySelector('.pay-loan-message');
 
-  clearErrors(errorMessageEl, cardFromSelect, cardToSelect, sumInput);
+  clearErrors(errorMessageEl, cardSelect, loanSelect, sumInput);
 
-  if (cardFrom && cardTo && cardFrom?._id === cardTo?._id) {
-    isValid = false;
-    cardFromSelect?.classList.add('invalid-field');
-    cardToSelect?.classList.add('invalid-field');
-    errorMessage += 'Карта списания должна отличаться от карты начисления. ';
-    errorMessageEl.innerText = errorMessage;
+  if (card && loan) {
+    const debtSum = getDebtSum(loan);
+    const sumDifference = subtractSum(sum, debtSum);
+
+    if (sumDifference > 0) {
+      isValid = false;
+      sumInput?.classList.add('invalid-field');
+      errorMessage += 'Сумма списания не должна быть больше суммы долга. ';
+      errorMessageEl.innerText = errorMessage;
+    }
   }
 
-  if (!cardFrom) {
+  if (!card) {
     isValid = false;
-    cardFromSelect?.classList.add('invalid-field');
-    showError(cardFromSelect, 'Карта не выбрана');
+    cardSelect?.classList.add('invalid-field');
+    showError(cardSelect, 'Карта не выбрана');
   }
 
-  if (!cardTo) {
+  if (!loan) {
     isValid = false;
-    cardToSelect?.classList.add('invalid-field');
-    showError(cardToSelect, 'Карта не выбрана');
+    loanSelect?.classList.add('invalid-field');
+    showError(loanSelect, 'Кредит не выбран');
   }
 
   if (sumInput.value.length === 0) {
@@ -50,8 +54,8 @@ function transferCardValidation(e: Event, cardFrom: IResCard | undefined,
     }
   }
 
-  if (cardFrom) {
-    if (sum > cardFrom.balance) {
+  if (card) {
+    if (sum > card.balance) {
       isValid = false;
       sumInput?.classList.add('invalid-field');
       errorMessage += 'Не достаточно средств на карте.';
@@ -59,11 +63,11 @@ function transferCardValidation(e: Event, cardFrom: IResCard | undefined,
     }
 
     if (sum) {
-      const minSum = minSumValues[cardFrom.currency.toLowerCase() as Currency];
+      const minSum = minSumValues[card.currency.toLowerCase() as Currency];
       if (sum < minSum) {
         isValid = false;
         sumInput?.classList.add('invalid-field');
-        showError(sumInput, `Минимальная сумма ${minSum}.00 ${cardFrom.currency.toLowerCase()}`);
+        showError(sumInput, `Минимальная сумма ${minSum}.00 ${card.currency.toLowerCase()}`);
       }
     }
   }
@@ -96,4 +100,12 @@ function clearErrors(errorMessageElement : HTMLElement, ...formElements: HTMLEle
   });
 }
 
-export default transferCardValidation;
+function getDebtSum(loan: IResCredit): number {
+  return ((+loan.totalSum.toFixed(2) * 100) - (+loan.paid.toFixed(2) * 100)) / 100;
+}
+
+function subtractSum(a: number, b: number): number {
+  return ((+a.toFixed(2) * 100) - (+b.toFixed(2) * 100)) / 100;
+}
+
+export default payLoanValidation;

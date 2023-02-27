@@ -92,9 +92,6 @@ function submitForm(e: Event, cardFrom: IResCard | undefined, cardTo: IResCard |
   if (transferCardValidation(e, cardFrom, cardTo, sum, minSum)) {
     handleTransfersCard(cardFrom as IResCard, cardTo as IResCard, sum);
   }
-
-  // баланса и суммы
-  // в десятичной части суммы должно быть не больше двух чисел
 }
 
 export default createTransfersCardDetails;
