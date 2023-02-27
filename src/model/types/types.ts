@@ -1,3 +1,12 @@
+export interface IReqHistory {
+  user_id: string;
+  cardNumber: number;
+  cardName: string;
+  paymentName: string;
+  sum: number;
+  data: string;
+}
+
 export interface IReqCard {
   user_id: string;
   cardType: string;

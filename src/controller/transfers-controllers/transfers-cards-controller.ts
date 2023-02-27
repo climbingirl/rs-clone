@@ -1,7 +1,12 @@
+import { getCurrentDate } from './../../model/utils';
+import { createItem } from './../../model/requests';
+import { IReqHistory } from './../../model/types/types';
 import { currencyConverterState } from '../sidebar/currencyConverterController';
 import { updateItem } from '../../model/requests';
 import { Currency, IReqCard } from '../../model/types/types';
 import { IResCard } from '../../model/types/responceTypes';
+import { importUserId } from '../../model/userId';
+import getCardNumber from '../cardNumber/getFullCardNumber';
 
 let rates: {
   [key in Currency]: number;
@@ -44,9 +49,19 @@ const handleTransfersCard = async (cardFrom: IResCard, cardTo: IResCard, sum: nu
     cvv: cardTo.cvv,
   };
 
+  const historyData: IReqHistory = {
+    user_id: importUserId(),
+    cardNumber: +getCardNumber(cardFrom._id),
+    cardName: cardFrom.name,
+    paymentName: 'перевод между картами',
+    sum: sum,
+    data: getCurrentDate(),
+  };
+
   await updateItem('cards', cardFrom._id, cardFromData);
   await updateItem('cards', cardTo._id, cardToData);
   detailsInner.innerHTML = 'Операция произведена успешно!';
+  await createItem('history', historyData);
 };
 
 function subtractSum(a: number, b: number): number {

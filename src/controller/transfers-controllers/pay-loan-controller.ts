@@ -1,8 +1,11 @@
-import { IReqCredit } from './../../model/types/types';
+import { IReqCredit, IReqHistory } from './../../model/types/types';
 import { currencyConverterState } from '../sidebar/currencyConverterController';
-import { deleteItem, updateItem } from '../../model/requests';
+import { createItem, deleteItem, updateItem } from '../../model/requests';
 import { Currency, IReqCard } from '../../model/types/types';
 import { IResCard, IResCredit } from '../../model/types/responceTypes';
+import { importUserId } from '../../model/userId';
+import getCardNumber from '../cardNumber/getFullCardNumber';
+import { getCurrentDate } from '../../model/utils';
 
 let rates: {
   [key in Currency]: number;
@@ -46,6 +49,15 @@ const handlePayLoan = async (card: IResCard, loan: IResCredit, sum: number): Pro
     paid: loanPaidSum,
   };
 
+  const historyData: IReqHistory = {
+    user_id: importUserId(),
+    cardNumber: +getCardNumber(card._id),
+    cardName: card.name,
+    paymentName: 'оплата кредита',
+    sum: sum,
+    data: getCurrentDate(),
+  };
+
   await updateItem('cards', card._id, cardData);
   await updateItem('credits', loan._id, loanData);
 
@@ -56,6 +68,7 @@ const handlePayLoan = async (card: IResCard, loan: IResCredit, sum: number): Pro
     detailsInner.innerHTML = 'Операция произведена успешно!';
   }
 
+  await createItem('history', historyData);
 };
 
 function subtractSum(a: number, b: number): number {

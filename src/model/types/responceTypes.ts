@@ -1,5 +1,16 @@
 import { IUser } from './types';
 
+export interface IResHistory {
+  type: string;
+  user_id: string;
+  cardNumber: number;
+  cardName: string;
+  paymentName: string;
+  sum: number;
+  data: string;
+  __v: number;
+}
+
 export interface IResCard {
   _id: string;
   type: string;

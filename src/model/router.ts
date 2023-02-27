@@ -9,6 +9,7 @@ import createElement from '../view/helpers/elements/element';
 import { closeModal } from '../view/helpers/modal';
 import createTransfersPage from '../view/main/pages/transfersPage/transfersPage';
 import { createFooter } from '../view/footer/createFooter';
+import createhistoryPage from '../view/main/pages/mainPage/historyPage/historyPage';
 
 export const router = () => {
   const path = window.location.pathname;
@@ -59,6 +60,9 @@ export const router = () => {
       } else if (path === '/metals') {
         const metalsPage = createMetalsPage();
         main.append(metalsPage);
+      } else if (path === '/history') {
+        const historyPage = createhistoryPage();
+        main.append(historyPage);
       } else {
         const mainPage = createMainPage();
         main.appendChild(mainPage);

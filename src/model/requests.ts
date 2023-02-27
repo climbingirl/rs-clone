@@ -1,10 +1,10 @@
-import { IResCard, IResCredit, IResDeposit } from './types/responceTypes';
-import { IReqCard, IReqCredit, IReqDeposit } from './types/types';
+import { IResCard, IResCredit, IResDeposit, IResHistory } from './types/responceTypes';
+import { IReqCard, IReqCredit, IReqDeposit, IReqHistory } from './types/types';
 import { importUserId } from './userId';
 
 const baseUrl = 'http://localhost:3000';
 
-export const getItems = async (category: string): Promise<Array<IResCard | IResCredit | IResDeposit>> => {
+export const getItems = async (category: string): Promise<Array<IResCard | IResCredit | IResDeposit | IResHistory>> => {
   const userId = importUserId();
   const response = await fetch(`${baseUrl}/products/${category}/${userId}`);
   const items = await response.json();
@@ -17,7 +17,7 @@ export const getItem = async (category: string, id: number): Promise<IResCard | 
   return item;
 };
 
-export const createItem = async (category: string, body: IReqCard | IReqCredit | IReqDeposit) => {
+export const createItem = async (category: string, body: IReqCard | IReqCredit | IReqDeposit | IReqHistory) => {
   await fetch(`${baseUrl}/products/${category}`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
