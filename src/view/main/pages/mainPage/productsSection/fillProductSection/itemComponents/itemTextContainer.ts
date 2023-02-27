@@ -1,7 +1,8 @@
+import { IResDeposit } from './../../../../../../../model/types/responceTypes';
 import { IResCard, IResCredit } from '../../../../../../../model/types/responceTypes';
 import createElement from '../../../../../../helpers/elements/element';
 
-const createItemTextContainer = (item: IResCard | IResCredit) => {
+const createItemTextContainer = (item: IResCard | IResCredit | IResDeposit) => {
   const itemTextContainer = createElement('div', 'item-text-container');
   const itemTitle = createElement('p', 'item-title');
   const itemData = createElement('p', 'item-title');

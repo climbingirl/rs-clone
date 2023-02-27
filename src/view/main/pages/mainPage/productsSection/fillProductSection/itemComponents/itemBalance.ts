@@ -1,9 +1,10 @@
+import { IResDeposit } from './../../../../../../../model/types/responceTypes';
 
 import { IResCard, IResCredit } from '../../../../../../../model/types/responceTypes';
 import openArrow from '../../../../../../../assets/images/open-arrow.svg';
 import createElement from '../../../../../../helpers/elements/element';
 
-const createItemBalance = (item: IResCard | IResCredit) => {
+const createItemBalance = (item: IResCard | IResCredit | IResDeposit) => {
   const balanceContainer = createElement('div', 'item-balance-container');
   const itemBalance = createElement('p', 'item-balance');
   const itemArrowComtainer = createElement('div', 'item-arrow-container');
