@@ -1,4 +1,3 @@
-
 import { IResCard, IResCredit, IResDeposit } from './types/responceTypes';
 import { IReqCard, IReqCredit, IReqDeposit } from './types/types';
 import { importUserId } from './userId';
@@ -9,7 +8,6 @@ export const getItems = async (category: string): Promise<Array<IResCard | IResC
   const userId = importUserId();
   const response = await fetch(`${baseUrl}/products/${category}/${userId}`);
   const items = await response.json();
-  console.log(items);
   return items;
 };
 
