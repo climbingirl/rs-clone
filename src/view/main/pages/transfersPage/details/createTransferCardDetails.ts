@@ -4,6 +4,7 @@ import createElement from '../../../../helpers/elements/element';
 import getLastCardFigures from '../../../../../controller/cardNumber/getLastCardFigures';
 import createButton from '../../../../helpers/elements/button';
 import handleTransfersCard from '../../../../../controller/transfers-controllers/transfers-cards-controller';
+import transferCardValidation from './transfer-card-validation';
 
 const minSum: {
   [key in Currency]: number;
@@ -36,7 +37,6 @@ const createTransfersCardDetails = (tarnsferIdName: string, cards: IResCard[]): 
 
   inputSum.type = 'text';
   inputSum.placeholder = `не менее ${minSum.rub}.00`;
-  inputSum.required = true;
   currencySpan.innerText = ' RUB';
   labelCardFrom.innerText = 'С карты';
   labelCardTo.innerText = 'На карту';
@@ -52,16 +52,20 @@ const createTransfersCardDetails = (tarnsferIdName: string, cards: IResCard[]): 
     setSumInfo(inputSum, currencySpan, selectedCardFrom?.currency);
   });
   cardToSelect.addEventListener('change', (e: Event): void => {selectedCardTo = setSelectedCard(e, cards);});
-  form.addEventListener('submit', (e: Event) => submitForm(e, errorMessage,
-    selectedCardFrom, selectedCardTo, +inputSum.value));
+  form.addEventListener('submit', (e: Event) => submitForm(e, selectedCardFrom, selectedCardTo, +inputSum.value));
+  inputSum.addEventListener('input', (e: Event) => {
+    const input = <HTMLInputElement>e.target;
+    input.value = input.value.replace(/[^\d\\.]/g, '');
+  });
+
   return transfersCardDetails;
 };
 
 function createCardOption(card: IResCard): HTMLElement {
   const optionText = `${card.name} ****${getLastCardFigures(card._id)} | ${card.balance.toFixed(2)} ${card.currency}`;
   const option = new Option(optionText);
-  option.dataset.cardId = card._id;
   option.dataset.cardName = card.name;
+  option.dataset.cardId = card._id;
 
   return option;
 }
@@ -83,12 +87,13 @@ function setSumInfo(input: HTMLInputElement, currencySpan: HTMLSpanElement, curr
   }
 }
 
-function submitForm(e: Event, errorMessage: HTMLElement,
-  cardFrom: IResCard | undefined, cardTo: IResCard | undefined, sum: number) {
+function submitForm(e: Event, cardFrom: IResCard | undefined, cardTo: IResCard | undefined, sum: number) {
   e.preventDefault();
-  if (cardFrom && cardTo) handleTransfersCard(cardFrom, cardTo, sum);
+  if (transferCardValidation(e, cardFrom, cardTo, sum, minSum)) {
+    handleTransfersCard(cardFrom as IResCard, cardTo as IResCard, sum);
+  }
 
-  // проверка на разные карты, выбор карт, баланса и суммы
+  // баланса и суммы
   // в десятичной части суммы должно быть не больше двух чисел
 }
 
