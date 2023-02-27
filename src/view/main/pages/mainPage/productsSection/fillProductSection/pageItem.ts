@@ -1,3 +1,4 @@
+import { IResDeposit } from './../../../../../../model/types/responceTypes';
 import createItemTextContainer from './itemComponents/itemTextContainer';
 import createItemRate from './itemComponents/itemRate';
 import createItemBalance from './itemComponents/itemBalance';
@@ -5,7 +6,7 @@ import createItemIcon from './itemComponents/itemIcon';
 import { IResCard, IResCredit } from '../../../../../../model/types/responceTypes';
 import createElement from '../../../../../helpers/elements/element';
 
-const createPageItem = (item: IResCard | IResCredit) => {
+const createPageItem = (item: IResCard | IResCredit | IResDeposit) => {
   const pageItem = createElement('div', 'page-item');
   const itemDescription = createElement('div', 'item-description');
   const itemIcon = createItemIcon(item);

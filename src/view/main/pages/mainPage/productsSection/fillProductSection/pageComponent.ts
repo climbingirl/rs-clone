@@ -1,10 +1,10 @@
 import createPageItem from './pageItem';
 import openArrow from '../../../../../../assets/images/open-arrow.svg';
 import rotateArrow from '../rotateArrow';
-import { IResCard, IResCredit } from '../../../../../../model/types/responceTypes';
+import { IResCard, IResCredit, IResDeposit } from '../../../../../../model/types/responceTypes';
 import createElement from '../../../../../helpers/elements/element';
 
-const createPageComponent = (name: string, items: Array<IResCard> | Array<IResCredit>) => {
+const createPageComponent = (name: string, items: Array<IResCard> | Array<IResCredit> | Array<IResDeposit>) => {
 
   const showItems = (scope: HTMLElement, e: Event) => {
     rotateArrow(<HTMLImageElement>e.target);

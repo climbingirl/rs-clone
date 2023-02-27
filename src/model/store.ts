@@ -1,3 +1,4 @@
+import { createItem } from './requests';
 import { IResAuth } from './types/responceTypes';
 // import { IUser } from
 // import { makeAutoObservable } from 'mobx';
@@ -10,11 +11,10 @@ export default class Store {
   user = {} as IUser;
 
   isAuth = false;
-  
 
-//   constructor() {
-//     makeAutoObservable(this);
-//   }
+  //   constructor() {
+  //     makeAutoObservable(this);
+  //   }
 
   setAuth(bool: boolean) {
     this.isAuth = bool;
@@ -31,7 +31,7 @@ export default class Store {
   async login(email: string, password: string) {
     try {
       const response = await AuthService.login(email, password);
-      console.log(response);
+      // console.log(response);
       localStorage.setItem('token', response.data.accessToken);
       this.setAuth(true);
       this.setUser(response.data.user);
@@ -44,13 +44,22 @@ export default class Store {
   async registration(email: string, password: string) {
     try {
       const response = await AuthService.registration(email, password);
-      console.log(response);
+      // console.log(response);
       localStorage.setItem('token', response.data.accessToken);
       this.setAuth(true);
       this.setUser(response.data.user);
+      createItem('/cards', {
+        user_id: response.data.user.id,
+        cardType: 'Visa',
+        name: 'Visa RSS',
+        date: '28.02.23',
+        currency: 'USD',
+        balance: 400,
+        cvv: '041',
+      });
     } catch (e) {
-     // console.log(e.response?.data?.message);
-     console.log(e);
+      // console.log(e.response?.data?.message);
+      console.log(e);
     }
   }
 
@@ -71,15 +80,13 @@ export default class Store {
     // this.setLoading(true);
     try {
       const response = await axios.get<IResAuth>(`${API_URL}/refresh`, { withCredentials: true });
-      console.log(response);
-
       localStorage.setItem('token', response.data.accessToken);
       this.setAuth(true);
       this.setUser(response.data.user);
     } catch (e) {
       //console.log(e.response?.data?.message);
       console.log(e);
-    } 
+    }
     // finally {
     //   this.setLoading(false);
     // }
