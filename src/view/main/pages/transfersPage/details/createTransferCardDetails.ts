@@ -3,7 +3,7 @@ import { IResCard } from './../../../../../model/types/responceTypes';
 import createElement from '../../../../helpers/elements/element';
 import getLastCardFigures from '../../../../../controller/cardNumber/getLastCardFigures';
 import createButton from '../../../../helpers/elements/button';
-import handleTransfersCard from '../../../../../controller/transfers-controllers/transfers-card-controller';
+import handleTransfersCard from '../../../../../controller/transfers-controllers/transfers-cards-controller';
 
 const minSum: {
   [key in Currency]: number;
@@ -26,7 +26,7 @@ const createTransfersCardDetails = (tarnsferIdName: string, cards: IResCard[]): 
     `${tarnsferIdName}-currency`, `${tarnsferIdName}-currency`));
   const errorMessage = createElement('div', `${tarnsferIdName}-message`, `${tarnsferIdName}-message`);
   const formBtn = <HTMLButtonElement>createButton('Продолжить', 'form__btn', 'btn-primary');
-  let selectedCardFrom: IResCard | undefined = cards[0];
+  let selectedCardFrom: IResCard | undefined = undefined;
   let selectedCardTo: IResCard | undefined = undefined;
 
   cards.map(card => cardFromSelect.append(createCardOption(card)));
@@ -35,7 +35,7 @@ const createTransfersCardDetails = (tarnsferIdName: string, cards: IResCard[]): 
   cardToSelect.prepend(new Option('Выберите карту', 'choos-card', true, true));
 
   inputSum.type = 'text';
-  inputSum.placeholder = `не менее ${minSum.rub}`;
+  inputSum.placeholder = `не менее ${minSum.rub}.00`;
   inputSum.required = true;
   currencySpan.innerText = ' RUB';
   labelCardFrom.innerText = 'С карты';
@@ -76,7 +76,7 @@ function setSelectedCard(event: Event, cards: IResCard[]): IResCard | undefined 
 function setSumInfo(input: HTMLInputElement, currencySpan: HTMLSpanElement, currency: string | undefined) {
   if (currency) {
     const minValue = minSum[currency.toLowerCase() as Currency];
-    input.placeholder = `не менее ${minValue}`;
+    input.placeholder = `не менее ${minValue}.00`;
     currencySpan.innerText = ` ${currency}`;
   } else {
     input.placeholder = '';

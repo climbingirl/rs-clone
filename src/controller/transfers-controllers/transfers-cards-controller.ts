@@ -1,7 +1,7 @@
-import { currencyConverterState } from './../sidebar/currencyConverterController';
+import { currencyConverterState } from '../sidebar/currencyConverterController';
 import { updateItem } from '../../model/requests';
 import { Currency, IReqCard } from '../../model/types/types';
-import { IResCard } from './../../model/types/responceTypes';
+import { IResCard } from '../../model/types/responceTypes';
 
 let rates: {
   [key in Currency]: number;

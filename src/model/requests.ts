@@ -1,4 +1,3 @@
-
 import { IResCard, IResCredit, IResDeposit } from './types/responceTypes';
 import { IReqCard, IReqCredit, IReqDeposit } from './types/types';
 import { importUserId } from './userId';
