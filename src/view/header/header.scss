@@ -1,0 +1,109 @@
+.header {
+    display: flex;
+    max-width: 1360px;
+    width: 100%;
+    margin: 0 auto;
+    align-items: center;
+    grid-area: head;
+    padding: 24px 0;
+
+    &__logo {
+        width: 100%;
+        max-width: 82px;
+        margin-right: 32px;
+        fill: $color-green;
+        
+        &:hover {
+            fill: white;
+
+            .rectangle {
+                stroke: $color-green;
+                stroke-dasharray: 4;
+                animation: dash 1s linear;
+            }
+        }
+    }
+
+    &__logo-svg {
+        max-width: 82px;
+        
+       
+    }
+}
+
+.menu {
+    &__list {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__item {
+        transition: $transition color;
+        cursor: pointer;
+        @include exo;
+        font-size: 16px;
+        position: relative;
+        color: $color-grey;
+
+        &::after {
+            position: absolute;
+            content: '';
+            width: 0;
+            height: 1px;
+            bottom: -4px;
+            left: 0;
+            transition: width $transition;
+            background-color: $color-green;
+        }
+
+        &:hover {
+            color: $color-grey-hover;
+
+            &::after {
+                width: 100%;
+            }
+        }
+
+        &:not(:last-child) {
+            margin-right: 20px;
+        }
+    }
+
+    &__link {
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
+
+.cabinet {
+    display: flex;
+    gap: 32px;
+    margin-left: auto;
+    align-items: center;
+
+
+    &__logo {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background-color: aqua;
+    }
+
+    &__out {
+        background-image: url('/src/assets/images/logout.svg');
+        width: 32px;
+        height: 32px;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+    }
+
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: 100;
+  }
+}

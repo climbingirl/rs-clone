@@ -1,0 +1,12 @@
+.container {
+    display: grid;
+    grid-template-areas: 'head head head'
+                          'main main side'
+                            'main main side';
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 24px;
+    @media (max-width: $tablet) {
+        display:flex;
+        flex-direction: column;
+    }
+}

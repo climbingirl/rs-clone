@@ -1,0 +1,33 @@
+.history-page {
+  border-radius: $border-8;
+  font-size: 20px;
+  color: $color-grey;
+
+  .history__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(52, 58, 64, 0.5);
+    padding: 10px 0;
+  }
+
+  .history__item-operation,
+  .history__item-number,
+  .history__item-sum {
+    flex-basis: 33.3%;
+  }
+
+  .history__header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+  }
+
+  .history__header-operation,
+  .history__header-number,
+  .history__header-sum {
+    flex-basis: 33.3%;
+    color: $color-yellow-hover;
+    font-style: italic;
+  }
+}

@@ -1,0 +1,15 @@
+.main {
+    width: 100%;
+    background-color: $color-white;
+    border-radius: $border-8;
+    padding: 16px 24px;
+    grid-area: main;
+
+    @media (max-width: $tablet) {
+        width: 100%;
+    }
+
+    canvas {
+        max-width: auto;
+    }
+}

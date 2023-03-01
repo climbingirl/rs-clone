@@ -1,0 +1,91 @@
+.converter {
+    display: flex;
+    gap: 40px;
+
+    @media (max-width: $desktop-s) {
+        flex-direction: column;
+    }
+    
+    @media (max-width: $tablet) {
+        flex-direction: row;
+    }
+
+    &__block {
+        max-width: 360px;
+        width: 100%;
+    }
+
+    &__wr {
+        @media (max-width: $tablet) {
+            width: 100%;
+        }
+    }
+}
+
+.converter-block {
+    background-color: $color-white;
+    border-radius: $border-8;
+    
+    &__title {
+        text-align: center;
+    }
+
+    &__controls {
+        display: flex;
+    }
+
+    &__btn {
+        width: calc(100% / 3);
+        background: $color-yellow;
+        border: 1px solid $color-grey;
+        border-radius: $border-4;
+        padding: 4px 8px;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: background .3s ease;
+        &:hover {
+            background: $color-yellow-hover;
+        }
+
+        &_active {
+            background: $color-yellow-hover;
+        }
+    }
+
+    &_base {
+        position: relative;
+
+        &::after {
+            content: "";
+            position: absolute;
+            right: -32px;
+            top: 16px;
+            background-image: url('/src/assets/images/arrows.svg');
+            width: 24px;
+            height: 24px;
+            background-size: contain;
+            background-repeat: no-repeat;
+
+            @media (max-width: $desktop-s) {
+                top: unset;
+                right: unset;
+                left: 48%;
+                bottom: -32px;
+                transform: rotateZ(90deg);
+            }
+        }
+
+    }
+
+    &__result {
+        padding: 16px 20px;
+    }
+
+    &__summ {
+        width: 100%;
+        font-size: 18px;
+        height: 32px;
+        border: none;
+        outline: none;
+    }
+}

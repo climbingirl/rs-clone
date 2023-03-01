@@ -1,0 +1,57 @@
+.services {
+  border-radius: $border-8;
+  font-size: 20px;
+  color: $color-grey;
+
+  &__inner {
+    padding: 20px 0;
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 30px;
+  }
+
+  &__item {
+    flex-basis: 50%;
+    cursor: pointer;
+    transition: 0.3s;
+    position: relative;
+    padding-left: 10px;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 10px;
+      width: 5px;
+      height: 5px;
+      background-color: $color-yellow-hover;
+      transition: 0.3s;
+    }
+
+    &:hover {
+      color: $color-green-light;
+    }
+  }
+
+  .form {
+    &__item {
+      margin: 15px 0;
+
+      select,
+      input {
+        color: $color-green;
+      }
+
+      input.loan-sum {
+        width: 45%;
+      }
+      input.loan-term {
+        width: 24%;
+      }
+    }
+
+    &__btn {
+      margin-top: 20px;
+    }
+  }
+}
