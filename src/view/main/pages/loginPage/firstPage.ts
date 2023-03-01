@@ -1,21 +1,31 @@
-import { IContactsData } from "../../../../model/types/types";
-import { contactsAnton, contactsEvgeniya, contactsSvatlana, itemsForList, svgAnton, svgEvgeniya, svgSvetlana } from "../../../../static/constants";
-import createElement from "../../../helpers/elements/element";
+import { IContactsData } from '../../../../model/types/types';
+import {
+  contactsAnton,
+  contactsEvgeniya,
+  contactsSvatlana,
+  itemsForList,
+  svgAnton,
+  svgEvgeniya,
+  svgSvetlana,
+} from '../../../../static/constants';
+import createElement from '../../../helpers/elements/element';
 import './login.scss';
 import Parallax from 'parallax-js';
-import createInput from "../../../helpers/elements/input";
-import createButton from "../../../helpers/elements/button";
-import Store from "../../../../model/store";
-import { getUserId } from "../../../../model/userId";
-import changePath from "../../../../controller/changePath";
-import initCurrenciesControls from "../../../../controller/sidebar/currencyConverterController";
-import { initMetalsControls } from "../../../../controller/sidebar/metallsController";
+import createInput from '../../../helpers/elements/input';
+import createButton from '../../../helpers/elements/button';
+import Store from '../../../../model/store';
+import { getUserId } from '../../../../model/userId';
+import changePath from '../../../../controller/changePath';
+import initCurrenciesControls from '../../../../controller/sidebar/currencyConverterController';
+import { initMetalsControls } from '../../../../controller/sidebar/metallsController';
 
 export const createFirstScreen = () => {
-    const fistScreen = createElement('div', 'first-screen');
-    const rightText = createElement('div', 'first-screen__text')
-    
-    rightText.insertAdjacentHTML('afterbegin', `
+  const fistScreen = createElement('div', 'first-screen');
+  const rightText = createElement('div', 'first-screen__text');
+
+  rightText.insertAdjacentHTML(
+    'afterbegin',
+    `
         <svg viewBox="0 0 800 900" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g id="background-illustration">
         <path id="Vector" opacity="0.07" d="M729.7 452.537C717 445.137 707.8 444.937 702.1 451.937C696.4 458.837 693.6 470.537 693.6 487.037V575.937C693.6 592.837 692 606.837 688.9 617.937C685.8 629.437 680.5 637.637 673.2 642.437C666.1 647.337 656.5 648.637 644.3 646.337C632.4 644.137 617.5 637.937 599.7 627.637L591.2 622.737V552.737L601.8 558.837C614.5 566.237 623 567.137 627.3 561.737C631.8 556.537 634.1 545.637 634.1 529.137V450.837C634.1 430.437 636.1 414.337 640.1 402.437C644.1 390.537 652 383.037 663.9 379.637C652 362.537 644.1 345.837 640.1 329.437C636.1 313.037 634.2 294.637 634.2 274.237V195.937C634.2 179.437 631.9 166.037 627.4 155.537C623.2 145.237 614.7 136.437 601.9 129.037L591.3 122.937V52.9371L599.8 57.8371C617.6 68.1371 632.5 79.0371 644.4 90.6371C656.6 102.337 666.2 114.837 673.3 127.937C680.7 141.237 685.9 155.437 689 170.537C692.1 185.237 693.7 201.137 693.7 217.937V306.837C693.7 323.337 696.5 338.337 702.2 351.737C707.9 365.237 717.1 375.637 729.8 382.937L729.7 452.537Z" fill="url(#paint0_linear)"/>
@@ -101,258 +111,282 @@ export const createFirstScreen = () => {
             <div class="first-screen__arrow"></div>
         </div>
     </div>
-    `)
-    fistScreen.append(rightText)
+    `,
+  );
+  fistScreen.append(rightText);
 
-    try {
-		const canvasDOM = document.createElement('canvas');
-		canvasDOM.setAttribute("style", "position: fixed; top: 0; left: 0;");
-		rightText.appendChild(canvasDOM);
-        
-	canvasDOM.width = window.innerWidth;
-	canvasDOM.height = window.innerHeight;
+  try {
+    const canvasDOM = document.createElement('canvas');
+    canvasDOM.setAttribute('style', 'position: fixed; top: 0; left: 0;');
+    rightText.appendChild(canvasDOM);
 
-	if (canvasDOM.getContext) {
-		const c = canvasDOM.getContext('2d'),
-			w = canvasDOM.width,
-			h = canvasDOM.height;
-		const centerPoint = {
-			x: w / 2,
-			y: h / 2
-		}
-		const mousePosition = {
-			x: centerPoint.x,
-			y: centerPoint.y
-		}
-		const flashlight_size = {
-			center: h / 8,
-			outside: h / 5
-		}
-		const gradient_color = {
-			first: "rgba(0,0,0,0.8)",
-			second: "rgba(0,0,0,0)"
-		}
-		let gradient;
+    canvasDOM.width = window.innerWidth;
+    canvasDOM.height = window.innerHeight;
 
-		function draw() {
-            if (c) {
-                c.save();
-                c.clearRect(0, 0, w, h);
-                gradient = c.createRadialGradient(mousePosition.x, mousePosition.y, flashlight_size.center, mousePosition.x, mousePosition.y, flashlight_size.outside);
-                gradient.addColorStop(0, gradient_color.first);
-                gradient.addColorStop(1, gradient_color.second);
-                c.fillStyle = '#000';
-                c.fillRect(0, 0, w, h);
-                c.globalCompositeOperation = 'destination-out';
-                c.fillStyle = gradient
-                c.arc(mousePosition.x, mousePosition.y, flashlight_size.outside, 0, Math.PI * 2, false);  
-                c.fill();
-                c.restore();
-            }
-		}
-		draw();
-        canvasDOM.addEventListener('mousemove', (event) => {
-            mousePosition.x = event.pageX;
-            mousePosition.y = event.pageY;
-        draw();
-        })
-	}
+    if (canvasDOM.getContext) {
+      const c = canvasDOM.getContext('2d'),
+        w = canvasDOM.width,
+        h = canvasDOM.height;
+      const centerPoint = {
+        x: w / 2,
+        y: h / 2,
+      };
+      const mousePosition = {
+        x: centerPoint.x,
+        y: centerPoint.y,
+      };
+      // eslint-disable-next-line @typescript-eslint/naming-convention
+      const flashlight_size = {
+        center: h / 8,
+        outside: h / 5,
+      };
+      // eslint-disable-next-line @typescript-eslint/naming-convention
+      const gradient_color = {
+        first: 'rgba(0,0,0,0.8)',
+        second: 'rgba(0,0,0,0)',
+      };
+      let gradient;
 
-	} catch (e) {
-		console.info("Exception occur: " + e);
-	}
-
-    document.addEventListener("scroll", () => {
-        const scroll = window.pageYOffset
-        const canvas = document.querySelector('canvas')
-        if (scroll >= 300) {
-            const firstPage = document.querySelector('.first-screen__text')
-            if (canvas && firstPage) {
-                firstPage.removeChild(canvas)
-            }
+      // eslint-disable-next-line no-inner-declarations
+      function draw() {
+        if (c) {
+          c.save();
+          c.clearRect(0, 0, w, h);
+          gradient = c.createRadialGradient(
+            mousePosition.x,
+            mousePosition.y,
+            flashlight_size.center,
+            mousePosition.x,
+            mousePosition.y,
+            flashlight_size.outside,
+          );
+          gradient.addColorStop(0, gradient_color.first);
+          gradient.addColorStop(1, gradient_color.second);
+          c.fillStyle = '#000';
+          c.fillRect(0, 0, w, h);
+          c.globalCompositeOperation = 'destination-out';
+          c.fillStyle = gradient;
+          c.arc(mousePosition.x, mousePosition.y, flashlight_size.outside, 0, Math.PI * 2, false);
+          c.fill();
+          c.restore();
         }
-    });
-    return fistScreen;
-}
+      }
+      draw();
+      canvasDOM.addEventListener('mousemove', (event) => {
+        mousePosition.x = event.pageX;
+        mousePosition.y = event.pageY;
+        draw();
+      });
+    }
+  } catch (e) {
+    console.info('Exception occur: ' + e);
+  }
 
+  document.addEventListener('scroll', () => {
+    const scroll = window.pageYOffset;
+    const canvas = document.querySelector('canvas');
+    if (scroll >= 300) {
+      const firstPage = document.querySelector('.first-screen__text');
+      if (canvas && firstPage) {
+        firstPage.removeChild(canvas);
+      }
+    }
+  });
+  return fistScreen;
+};
 
 const createCard = (dataSet: string, svg: string, photoLink: string, contactsData: IContactsData) => {
-    const block = createElement('div', 'card__wr')
-    block.dataset.type = dataSet;
-    const elWr = createElement('div', 'el__container')
-    elWr.dataset.type = dataSet
-    const mainEl = createElement('div', 'card')
-    const photo = createElement('div', 'card__photo')
-    photo.insertAdjacentHTML('afterbegin',  `
+  const block = createElement('div', 'card__wr');
+  block.dataset.type = dataSet;
+  const elWr = createElement('div', 'el__container');
+  elWr.dataset.type = dataSet;
+  const mainEl = createElement('div', 'card');
+  const photo = createElement('div', 'card__photo');
+  photo.insertAdjacentHTML(
+    'afterbegin',
+    `
         <div class="photo">
             ${svg}
             <img class="photo__real" src=${photoLink}>
         </div>
-    `)
-    const name = createElement('h3', 'card__name')
-    const contacts = createElement('ul', 'card__contacts');
-    const git= createElement('li', 'card__li')
-    const link = document.createElement('a')
-    link.href = contactsData.gitLink
-    link.classList.add('card__link')
-    link.textContent= 'Github'
-    link.target="_blank"
-    git.append(link)
-    const tel= createElement('li', 'card__li')
-    const linkForTel = document.createElement('a')
-    linkForTel.href = contactsData.telegramLink
-    linkForTel.textContent='Telegram'
-    linkForTel.target="_blank"
-    linkForTel.classList.add('card__link')
-    tel.append(linkForTel)
-    name.textContent=contactsData.name;
-    contacts.append(git, linkForTel)
-    mainEl.append(photo,name,contacts)
-    for (let i=0; i<300; i++) {
-        const el = createElement('span', 'el')
-        el.dataset.type=dataSet;
-        elWr.append(el)
-    }
-    block.append(mainEl,elWr)
-    return block;
-}
+    `,
+  );
+  const name = createElement('h3', 'card__name');
+  const contacts = createElement('ul', 'card__contacts');
+  const git = createElement('li', 'card__li');
+  const link = document.createElement('a');
+  link.href = contactsData.gitLink;
+  link.classList.add('card__link');
+  link.textContent = 'Github';
+  link.target = '_blank';
+  git.append(link);
+  const tel = createElement('li', 'card__li');
+  const linkForTel = document.createElement('a');
+  linkForTel.href = contactsData.telegramLink;
+  linkForTel.textContent = 'Telegram';
+  linkForTel.target = '_blank';
+  linkForTel.classList.add('card__link');
+  tel.append(linkForTel);
+  name.textContent = contactsData.name;
+  contacts.append(git, linkForTel);
+  mainEl.append(photo, name, contacts);
+  for (let i = 0; i < 300; i++) {
+    const el = createElement('span', 'el');
+    el.dataset.type = dataSet;
+    elWr.append(el);
+  }
+  block.append(mainEl, elWr);
+  return block;
+};
 
 export const createLoginAppBlock = () => {
-    const loginBlock = createElement('div', 'about', 'about');
-    const ul = createElement('ul', 'scene')
-    const li = createElement('li', 'layer')
-    const wave1 = createElement('div', 'wave');
-    wave1.classList.add('wave__first')
-    wave1.dataset.depth = '0.4'
-    li.dataset.depth = '0.1'
-    li.append(wave1)
-    
-    const li2 = createElement('li', 'layer')
-    li2.dataset.depth = '1'
-    const wave2 = createElement('div', 'wave');
-    wave2.classList.add('wave__sec')
-    wave2.dataset.depth = '1'
-    li2.append(wave2)
+  const loginBlock = createElement('div', 'about', 'about');
+  const ul = createElement('ul', 'scene');
+  const li = createElement('li', 'layer');
+  const wave1 = createElement('div', 'wave');
+  wave1.classList.add('wave__first');
+  wave1.dataset.depth = '0.4';
+  li.dataset.depth = '0.1';
+  li.append(wave1);
 
-    const li3 = createElement('li', 'layer')
-    li3.dataset.depth = '0.4'
-    const wave3 = createElement('div', 'wave');
-    wave3.classList.add('wave__third')
-    wave3.dataset.depth = '0.4'
-    li3.append(wave3)
+  const li2 = createElement('li', 'layer');
+  li2.dataset.depth = '1';
+  const wave2 = createElement('div', 'wave');
+  wave2.classList.add('wave__sec');
+  wave2.dataset.depth = '1';
+  li2.append(wave2);
 
-    const treasure = createElement('li', 'layer');
-    treasure.classList.add('treasure')
-    treasure.dataset.depth = '0.6'
-    const box = createElement('div', 'chest-wrap', 'chest-wrap')
-    box.dataset.depth = '0.6'
-    box.insertAdjacentHTML('afterbegin', `
+  const li3 = createElement('li', 'layer');
+  li3.dataset.depth = '0.4';
+  const wave3 = createElement('div', 'wave');
+  wave3.classList.add('wave__third');
+  wave3.dataset.depth = '0.4';
+  li3.append(wave3);
+
+  const treasure = createElement('li', 'layer');
+  treasure.classList.add('treasure');
+  treasure.dataset.depth = '0.6';
+  const box = createElement('div', 'chest-wrap', 'chest-wrap');
+  box.dataset.depth = '0.6';
+  box.insertAdjacentHTML(
+    'afterbegin',
+    `
        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 -50 500 400" id="chest" class="shake-chest"><defs><clipPath id="clip-path"><rect class="cls-1" x="115.28" y="168.67" width="275.85" height="130.18"/></clipPath><clipPath id="clip-path-2"><rect class="cls-2" x="45.02" y="167.49" width="410.31" height="44.75" rx="19.76"/></clipPath><clipPath id="clip-path-3"><rect class="cls-3" x="61.56" y="184.2" width="13.99" height="73.92" rx="7"/></clipPath><clipPath id="clip-path-4"><rect class="cls-3" x="425.19" y="184.2" width="13.99" height="73.92" rx="7"/></clipPath><clipPath id="clip-path-5"><polygon class="cls-3" points="398.15 303.73 99.7 303.73 99.7 167.25 122.3 167.25 122.3 281.13 375.55 281.13 375.55 167.25 398.15 167.25 398.15 303.73"/></clipPath><clipPath id="clip-path-6"><circle class="cls-4" cx="153.22" cy="249.46" r="12"/></clipPath><clipPath id="clip-path-7"><polygon class="cls-3" points="409.93 192.24 87.04 192.24 87.04 30.79 110.56 30.79 110.56 168.72 386.41 168.72 386.41 30.79 409.93 30.79 409.93 192.24"/></clipPath><clipPath id="clip-path-8"><rect class="cls-3" x="237.79" y="30.79" width="23.52" height="153.96"/></clipPath><clipPath id="clip-path-9"><circle class="cls-4" cx="368.5" cy="167.49" r="12"/></clipPath><clipPath id="clip-path-10"><rect class="cls-3" x="201.18" y="145.5" width="95.67" height="83.43"/></clipPath></defs><title>Aktiv 1</title><g id="Lag_2" data-name="Lag 2"><g id="Layer_1" data-name="Layer 1"><g id="chest"><g id="chest-bottom"><polygon class="cls-5" points="378.28 170.42 366.31 123.87 130.2 123.87 117.42 172.75 378.28 170.42"/><polygon class="cls-1" points="133.42 126.08 133.42 167.49 122.3 167.49 133.42 126.08"/><polygon class="cls-1" points="375.55 167.25 363.54 167.25 363.54 125.86 375.55 167.25"/><ellipse class="cls-6" cx="248.68" cy="178.45" rx="126.38" ry="36.8"/><rect class="cls-1" x="115.28" y="168.67" width="275.85" height="130.18"/><g class="cls-7"><rect class="cls-4" x="78.51" y="246.01" width="393.48" height="6.72"/></g><rect class="cls-2" x="45.02" y="167.49" width="410.31" height="44.75" rx="19.76"/><g class="cls-8"><rect class="cls-4" y="156.9" width="496.25" height="33.24"/></g><rect class="cls-3" x="61.56" y="184.2" width="13.99" height="73.92" rx="7"/><g class="cls-9"><rect class="cls-10" x="38.82" y="117.12" width="29.73" height="208.08"/></g><rect class="cls-3" x="425.19" y="184.2" width="13.99" height="73.92" rx="7"/><g class="cls-11"><rect class="cls-10" x="402.45" y="117.12" width="29.73" height="208.08"/></g><polyline class="cls-12" points="117.42 167.67 117.42 298.84 393.27 298.84 393.27 167.67"/><polygon class="cls-3" points="398.15 303.73 99.7 303.73 99.7 167.25 122.3 167.25 122.3 281.13 375.55 281.13 375.55 167.25 398.15 167.25 398.15 303.73"/><g class="cls-13"><rect class="cls-10" x="76.88" y="164" width="29.73" height="146.08"/><rect class="cls-10" x="122.48" y="164.22" width="264.1" height="125.08"/></g><polygon class="cls-3" points="122.3 167.25 133.42 126.08 363.54 126.08 375.55 167.25 398.15 167.25 381.71 121.65 117.42 121.65 99.7 167.25 122.3 167.25"/><polygon class="cls-10" points="106.61 167.67 124.11 121.65 117.42 121.65 99.7 167.25 106.61 167.67"/><polygon class="cls-14" points="386.58 167.49 371.79 125.86 363.54 125.86 375.55 167.25 386.58 167.49"/><circle class="cls-4" cx="153.22" cy="249.46" r="12"/><g class="cls-15"><circle class="cls-2" cx="153.22" cy="243.24" r="12"/></g></g><g id="chest-top"><rect class="cls-16" x="102.45" y="35.07" width="299.37" height="149.69"/><rect class="cls-2" x="153.22" y="39.8" width="56.15" height="93.85"/><rect class="cls-4" x="144.67" y="35.07" width="56.15" height="90.43"/><rect class="cls-2" x="305.04" y="39.8" width="56.15" height="93.85"/><rect class="cls-4" x="296.85" y="39.8" width="56.15" height="85.7"/><polyline class="cls-17" points="104.59 35.07 104.59 184.75 403.96 184.75 403.96 35.07"/><polygon class="cls-3" points="409.93 192.24 87.04 192.24 87.04 30.79 110.56 30.79 110.56 168.72 386.41 168.72 386.41 30.79 409.93 30.79 409.93 192.24"/><g class="cls-18"><polygon class="cls-10" points="96.36 213.21 66.63 213.21 66.63 5.13 96.36 5.13 125.06 30.94 125.06 39.19 96.36 39.33 96.36 213.21"/><rect class="cls-10" x="222.84" y="5.13" width="29.73" height="208.08"/><polygon class="cls-10" points="393.27 173.33 110.56 173.33 110.56 28.47 421.74 28.47 421.3 37.51 393.27 37.08 393.27 173.33"/></g><rect class="cls-19" x="110.56" y="35.07" width="275.85" height="9.47"/><rect class="cls-3" x="237.79" y="30.79" width="23.52" height="153.96"/><g class="cls-20"><polygon class="cls-10" points="246.15 214.03 216.42 214.03 216.42 0 246.15 0 269.66 37.41 246.15 37.41 246.15 214.03"/></g><circle class="cls-4" cx="368.5" cy="167.49" r="12"/><g class="cls-21"><circle class="cls-2" cx="368.5" cy="161.27" r="12"/></g></g><g id="chest-lock"><rect class="cls-2" x="207.23" y="153.94" width="95.67" height="83.43"/><rect class="cls-3" x="201.18" y="145.5" width="95.67" height="83.43"/><g class="cls-22"><polygon class="cls-23" points="168.47 107.57 329.12 268.9 305.6 106.39 168.47 107.57"/></g><path class="cls-2" d="M250.79,208h0a6.86,6.86,0,0,1-6.82-7.61l2.36-21.72h8.93l2.36,21.72A6.87,6.87,0,0,1,250.79,208Z"/><circle class="cls-2" cx="250.79" cy="178.67" r="12.47"/><rect class="cls-24" x="201.18" y="144.18" width="95.67" height="11.01"/><rect class="cls-25" x="201.11" y="144.13" width="95.74" height="3.72"/></g><g id="chest-sparkles"><path id="sparkle_mid" class="cls-26" d="M207.1,115.46S187.64,110,183.29,91.65c-4.65,19.17-23.82,23.81-23.82,23.81s18.39,4.39,23.82,23.82C187.42,119.6,207.1,115.46,207.1,115.46Z"/><path id="sparkle_left" class="cls-26" d="M177,159s-13.23-3.7-16.19-16.18c-3.16,13-16.18,16.18-16.18,16.18s12.5,3,16.18,16.19C163.66,161.78,177,159,177,159Z"/><path id="sparkle_right" class="cls-26" d="M349.3,122.91s-13.22-3.7-16.18-16.18c-3.16,13-16.19,16.18-16.19,16.18s12.5,3,16.19,16.19C335.93,125.72,349.3,122.91,349.3,122.91Z"/></g></g></g></g></svg> 
-    `)
-    treasure.append(box)
+    `,
+  );
+  treasure.append(box);
 
-    const li6 = createElement('li', 'layer')
-    li6.dataset.depth = '0.4'
-    const sun = createElement('div', 'sun');
-    sun.dataset.depth = '0.4';
-    li6.append(sun)    
+  const li6 = createElement('li', 'layer');
+  li6.dataset.depth = '0.4';
+  const sun = createElement('div', 'sun');
+  sun.dataset.depth = '0.4';
+  li6.append(sun);
 
-    const li5 = createElement('li', 'layer')
-    li5.dataset.depth = '0.6'
-    const clouds = createElement('div', 'clouds__wr');
-    clouds.dataset.depth = '0.6';
-    const inClouds = createElement('div', 'clouds')
-    clouds.append(inClouds)
-    li5.append(clouds)
+  const li5 = createElement('li', 'layer');
+  li5.dataset.depth = '0.6';
+  const clouds = createElement('div', 'clouds__wr');
+  clouds.dataset.depth = '0.6';
+  const inClouds = createElement('div', 'clouds');
+  clouds.append(inClouds);
+  li5.append(clouds);
 
-    const formAuth = createElement('div', 'auth')
-    const store = new Store();
-    const loginMsg = createElement('p', 'login-msg');
-    const loginInput = createInput('email', 'login-input');
-    const passwordInput = createInput('password', 'password-input');
-    const loginBtn = createButton('Вход', 'login-btn');
-    const registrationBtn = createButton('Регистрация', 'registration-btn');
-    (async () => {
-        if (localStorage.getItem('token')) await store.checkAuth();
-        loginMsg.textContent = store.isAuth ? `Вы авторизированы как ${store.user.email}` : 'Требуется авторизация';
-    })();
+  const formAuth = createElement('div', 'auth');
+  const store = new Store();
+  const loginMsg = createElement('p', 'login-msg');
+  const loginInput = createInput('email', 'login-input');
+  const passwordInput = createInput('password', 'password-input');
+  const loginBtn = createButton('Вход', 'login-btn');
+  const registrationBtn = createButton('Регистрация', 'registration-btn');
+  (async () => {
+    if (localStorage.getItem('token')) await store.checkAuth();
+    loginMsg.textContent = store.isAuth
+      ? `Вы авторизированы как ${store.user.email}`
+      : 'Требуется авторизация';
+  })();
 
-    loginInput.placeholder = 'Email';
-    passwordInput.placeholder = 'Password';
+  loginInput.placeholder = 'Email';
+  passwordInput.placeholder = 'Password';
 
-    loginBtn.addEventListener('click', () => {
-        store.login(loginInput.value, passwordInput.value);
-        getUserId(store.user.id);
-        changePath('/');
-        initCurrenciesControls();
-        initMetalsControls();
+  loginBtn.addEventListener('click', () => {
+    store.login(loginInput.value, passwordInput.value);
+    getUserId(store.user.id);
+    changePath('/');
+    initCurrenciesControls();
+    initMetalsControls();
+  });
+  registrationBtn.addEventListener('click', () => store.registration(loginInput.value, passwordInput.value));
+
+  formAuth.appendChild(loginMsg);
+  formAuth.appendChild(loginInput);
+  formAuth.appendChild(passwordInput);
+  formAuth.appendChild(loginBtn);
+  formAuth.appendChild(registrationBtn);
+  ul.append(li, li3, treasure, li6, li5, li2);
+  const boxClick = createElement('div', 'box-click');
+  loginBlock.append(ul, boxClick, formAuth);
+  const parallaxInstance = new Parallax(ul, {
+    relativeInput: true,
+  });
+
+  window.addEventListener('load', () => {
+    const chest = document.querySelector('#chest');
+    boxClick.addEventListener('click', () => {
+      if (chest) {
+        chest.classList.remove('shake-chest');
+        chest.classList.add('open-chest');
+        formAuth.classList.add('active');
+      }
     });
-    registrationBtn.addEventListener('click', () => store.registration(loginInput.value, passwordInput.value));
+  });
 
-    formAuth.appendChild(loginMsg);
-    formAuth.appendChild(loginInput);
-    formAuth.appendChild(passwordInput);
-    formAuth.appendChild(loginBtn);
-    formAuth.appendChild(registrationBtn);
-    ul.append( li, li3,treasure, li6, li5, li2 , )
-    const boxClick = createElement('div', 'box-click')
-    loginBlock.append( ul, boxClick, formAuth)
-    const parallaxInstance = new Parallax(ul, {
-        relativeInput: true
-    });
-
-    window.addEventListener('load', ()=> {
-        const chest = document.querySelector('#chest');
-        boxClick.addEventListener('click', () => {
-            if (chest) {
-                chest.classList.remove('shake-chest');
-                chest.classList.add('open-chest');
-                formAuth.classList.add('active')
-            }
-        })
-    })
-
-    return loginBlock
-        
-}
+  return loginBlock;
+};
 
 export const createSecondScreen = () => {
-    const nextScreen = createElement('div', 'second-screen');
-    const secWr = createElement('div', 'second-screen__container')
-    const title = createElement('h2', 'second-screen__title')
-    title.textContent = 'Команда'
-    const cardWr = createElement('div','second-screen__wr' )
-    const card1 = createCard('1', svgEvgeniya, 'https://ltdfoto.ru/images/2023/02/17/devbublik.jpg', contactsEvgeniya)
-    const card3 = createCard('3', svgAnton, 'https://ltdfoto.ru/images/2023/02/22/anton.jpg', contactsAnton)
-    const card2 = createCard('2', svgSvetlana, 'https://ltdfoto.ru/images/2023/02/21/sveta.jpg',contactsSvatlana)
-    cardWr.append(card1,card3, card2)
-    nextScreen.append(cardWr)  
-    secWr.append(title, cardWr)
-    nextScreen.append(secWr)
-    window.addEventListener('load', () => {
-        window.addEventListener('click', (e) => {
-            const target = e.target as HTMLElement;
-            
-            if (target.classList.contains('el' || 'el__container')) {
-                const dataset = target.dataset.type;
-                const elems = document.querySelectorAll(`.el[data-type="${dataset}"]`)
-                const elContainer = document.querySelector(`.el__container[data-type="${dataset}"]`)
-                const block = document.querySelector(`.card__wr[data-type="${dataset}"]`)
-                elems.forEach((elem, ind) => {
-                    let random = Math.floor(Math.random()*10)
-                    let delay = ind * 0.001* random;
-                    (elem as HTMLElement).style.animation = `fadeIn .1s ease ${String(delay)}s reverse forwards`;
-                    setTimeout(() => {
-                        elContainer?.classList.add('hide')
-                    }, 2500)
-                })
-                    if (block) {
-                    block.classList.add('active')
-                }
-                    
-            }
-        })
-    })
-    return nextScreen
+  const nextScreen = createElement('div', 'second-screen');
+  const secWr = createElement('div', 'second-screen__container');
+  const title = createElement('h2', 'second-screen__title');
+  title.textContent = 'Команда';
+  const cardWr = createElement('div', 'second-screen__wr');
+  const card1 = createCard(
+    '1',
+    svgEvgeniya,
+    'https://ltdfoto.ru/images/2023/02/17/devbublik.jpg',
+    contactsEvgeniya,
+  );
+  const card3 = createCard('3', svgAnton, 'https://ltdfoto.ru/images/2023/02/22/anton.jpg', contactsAnton);
+  const card2 = createCard(
+    '2',
+    svgSvetlana,
+    'https://ltdfoto.ru/images/2023/02/21/sveta.jpg',
+    contactsSvatlana,
+  );
+  cardWr.append(card1, card3, card2);
+  nextScreen.append(cardWr);
+  secWr.append(title, cardWr);
+  nextScreen.append(secWr);
+  window.addEventListener('load', () => {
+    window.addEventListener('click', (e) => {
+      const target = e.target as HTMLElement;
 
-}
+      if (target.classList.contains('el' || 'el__container')) {
+        const dataset = target.dataset.type;
+        const elems = document.querySelectorAll(`.el[data-type="${dataset}"]`);
+        const elContainer = document.querySelector(`.el__container[data-type="${dataset}"]`);
+        const block = document.querySelector(`.card__wr[data-type="${dataset}"]`);
+        elems.forEach((elem, ind) => {
+          const random = Math.floor(Math.random() * 10);
+          const delay = ind * 0.001 * random;
+          (elem as HTMLElement).style.animation = `fadeIn .1s ease ${String(delay)}s reverse forwards`;
+          setTimeout(() => {
+            elContainer?.classList.add('hide');
+          }, 2500);
+        });
+        if (block) {
+          block.classList.add('active');
+        }
+      }
+    });
+  });
+  return nextScreen;
+};

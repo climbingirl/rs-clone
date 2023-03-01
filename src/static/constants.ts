@@ -1,19 +1,19 @@
 export const BEL_TO_RUS = 28;
-export let baseDate = '2023-02-01'
-export let endDate = '2023-02-08'
+export const baseDate = '2023-02-01';
+export const endDate = '2023-02-08';
 
 export const metallsTypes = {
-    gold: 0,
-    silver: 1,
-    platina: 2,
-    palladii: 3
-}
+  gold: 0,
+  silver: 1,
+  platina: 2,
+  palladii: 3,
+};
 export const metallsTypesInRu = {
-    gold: 'Золото',
-    silver: 'Серебро',
-    platina: 'Платина',
-    palladii: 'Палладий'
-}
+  gold: 'Золото',
+  silver: 'Серебро',
+  platina: 'Платина',
+  palladii: 'Палладий',
+};
 
 export const dayTimeStamp = 86400000;
 
@@ -24,7 +24,6 @@ export const svgEvgeniya = `
         <path class="line hair" fill="none" stroke="#000000" stroke-miterlimit="10"  d="M0 129.5H11H41L47 140.5L49.1333 146.9C49.3775 147.632 49.5693 148.381 49.7074 149.141V149.141C50.2223 151.973 51.6286 154.566 53.7211 156.542L59.5 162L71 170L83 177.5L84.0135 178.311C88.1293 181.603 93.4814 182.927 98.6573 181.931L103.391 181.021C103.464 181.007 103.535 180.987 103.604 180.962V180.962C108.646 179.104 110.998 173.314 108.68 168.467L107.5 166L102.5 155.5V155.5C103.825 152.189 105.678 149.114 107.988 146.397L113 140.5L120 132" stroke="black"/>
     </svg>
  `;
-
 
 export const svgSvetlana = `
     <svg width="214" height="214" viewBox="0 0 214 214" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -43,44 +42,44 @@ export const svgAnton = `
 `;
 
 export const contactsEvgeniya = {
-    name: 'Евгения',
-    gitLink: 'https://github.com/devBublik',
-    telegramLink: 'https://t.me/EvgeniaBublik'
-}
+  name: 'Евгения',
+  gitLink: 'https://github.com/devBublik',
+  telegramLink: 'https://t.me/EvgeniaBublik',
+};
 
 export const contactsSvatlana = {
-    name: 'Светлана',
-    gitLink: 'https://github.com/climbingirl',
-    telegramLink: 'https://t.me/climbingirl'
-}
+  name: 'Светлана',
+  gitLink: 'https://github.com/climbingirl',
+  telegramLink: 'https://t.me/climbingirl',
+};
 
 export const contactsAnton = {
-    name: 'Антон',
-    gitLink: 'https://github.com/AntonSkalaban/',
-    telegramLink: 'https://t.me/Aazzbbc'
-}
+  name: 'Антон',
+  gitLink: 'https://github.com/AntonSkalaban/',
+  telegramLink: 'https://t.me/Aazzbbc',
+};
 
 export const itemsForList = [
-    'можно создать карту',
-    'оформить кредит',
-    'оформить вклад',
-    'перевести средства с одного счета на другой',
-    'получить информацию о курсе валют',
-    'получить информацию о ценных металлах',
-    'проверить динамику курсов ценных металлов за желаемый период'
-]
+  'можно создать карту',
+  'оформить кредит',
+  'оформить вклад',
+  'перевести средства с одного счета на другой',
+  'получить информацию о курсе валют',
+  'получить информацию о ценных металлах',
+  'проверить динамику курсов ценных металлов за желаемый период',
+];
 
 export const footerLinks = [
-    {
-        name: 'Антон',
-        git : 'https://github.com/AntonSkalaban/'
-    },
-    {
-        name: 'Cветлана',
-        git: 'https://github.com/climbingirl/rs-clone',
-    },
-    {
-        name:'Евгения',
-        git: 'https://github.com/devBublik/',
-    },
-]
+  {
+    name: 'Антон',
+    git: 'https://github.com/AntonSkalaban/',
+  },
+  {
+    name: 'Cветлана',
+    git: 'https://github.com/climbingirl/rs-clone',
+  },
+  {
+    name: 'Евгения',
+    git: 'https://github.com/devBublik/',
+  },
+];

@@ -1,9 +1,11 @@
-import './currency-converte.scss'
+import './currency-converte.scss';
 
 const renderCurrencyConverter = () => {
-     const sidebar: HTMLElement | null = document.querySelector('.right-sidebar');
-    if (sidebar) {
-        sidebar.insertAdjacentHTML('beforeend', `
+  const sidebar: HTMLElement | null = document.querySelector('.right-sidebar');
+  if (sidebar) {
+    sidebar.insertAdjacentHTML(
+      'beforeend',
+      `
             <section class="converter__wr">
                 <h2> Конвертер валют</h2>
                 <div class="converter">
@@ -40,8 +42,9 @@ const renderCurrencyConverter = () => {
                     </div>
                 </div>
             </section>
-        `)
-    }
-}
+        `,
+    );
+  }
+};
 
 export default renderCurrencyConverter;

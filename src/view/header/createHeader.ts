@@ -5,11 +5,11 @@ import createNav from '../nav/nav';
 import './header.scss';
 
 const createHeader = () => {
-    const header = createElement('header', 'header')
-    const logoWr = createElement('div', 'header__logo');
-    const linkToMain = document.createElement('a');
-    linkToMain.href = '/';
-    const logo = `
+  const header = createElement('header', 'header');
+  const logoWr = createElement('div', 'header__logo');
+  const linkToMain = document.createElement('a');
+  linkToMain.href = '/';
+  const logo = `
         <svg class="header__logo" xmlns="http://www.w3.org/2000/svg" width="82" height="76" viewBox="0 0 82 76" fill="none">
             <mask id="mask0_422_17" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="82" height="76">
                 <rect width="82" height="76" fill="#AAAAAA"/>
@@ -26,20 +26,18 @@ const createHeader = () => {
             </clipPath>
             </defs>
         </svg>
-    `
-    linkToMain.insertAdjacentHTML('afterbegin', logo);
-    logoWr.insertAdjacentElement('afterbegin',linkToMain);
-    const nav = createNav();
-    const cabinet = createElement('div', 'cabinet');
-    const cabinetLogo = createElement('div', 'cabinet__logo');
-    const cabinetName = createElement('h5', 'cabinet__name');
-    cabinetName.textContent = 'RSS';
-    const cabinetOutBtn = createElement('button', 'cabinet__out');
-    cabinet.append(cabinetLogo,cabinetName, cabinetOutBtn);
-    header.append(logoWr, nav, cabinet)
-    return header;
+    `;
+  linkToMain.insertAdjacentHTML('afterbegin', logo);
+  logoWr.insertAdjacentElement('afterbegin', linkToMain);
+  const nav = createNav();
+  const cabinet = createElement('div', 'cabinet');
+  const cabinetLogo = createElement('div', 'cabinet__logo');
+  const cabinetName = createElement('h5', 'cabinet__name');
+  cabinetName.textContent = 'RSS';
+  const cabinetOutBtn = createElement('button', 'cabinet__out');
+  cabinet.append(cabinetLogo, cabinetName, cabinetOutBtn);
+  header.append(logoWr, nav, cabinet);
+  return header;
 };
-
-
 
 export default createHeader;

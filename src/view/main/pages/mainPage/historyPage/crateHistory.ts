@@ -7,7 +7,7 @@ const createHistory = async (): Promise<void> => {
   const historyPage = <HTMLElement>document.getElementById('history-page');
   const historyInner = createElement('div', 'history__inner');
   const historyHeader = createElement('div', 'history__header');
-  const headerOperation= createElement('div', 'history__header-operation');
+  const headerOperation = createElement('div', 'history__header-operation');
   const headerNumber = createElement('div', 'history__header-number');
   const headerSum = createElement('div', 'history__header-sum');
 
@@ -15,7 +15,7 @@ const createHistory = async (): Promise<void> => {
   headerNumber.innerText = 'Номер карты';
   headerSum.innerText = 'Сумма операции';
 
-  historyItems.map(item => {
+  historyItems.map((item) => {
     const historyItem = createElement('div', 'history__item');
     const itemOperation = createElement('div', 'history__item-operation');
     const itemNumber = createElement('div', 'history__item-number');

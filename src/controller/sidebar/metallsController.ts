@@ -8,6 +8,7 @@ import createButton from '../../view/helpers/elements/button';
 
 export const getMetalData = async (types: number[], dates?: string[]) => {
   if (!dates) {
+    // eslint-disable-next-line no-param-reassign
     dates = getLastThreeDays();
   }
   const metalData = await getDinamicMetallPrices(dates);
@@ -21,11 +22,12 @@ export const getMetalData = async (types: number[], dates?: string[]) => {
 
 export const makeConfig = (data: IMetalRes[], dates?: string[]) => {
   if (!dates) {
+    // eslint-disable-next-line no-param-reassign
     dates = getLastThreeDays();
   }
-  let labels = data[0].dates;
-  let sets = [];
-  let datasetsArr = data;
+  const labels = data[0].dates;
+  const sets = [];
+  const datasetsArr = data;
   for (let i = 0; i < data.length; i++) {
     sets.push({
       data: data[i].data,
@@ -33,7 +35,7 @@ export const makeConfig = (data: IMetalRes[], dates?: string[]) => {
       type: data[i].type,
     });
   }
-  let config: ChartConfig = {
+  const config: ChartConfig = {
     type: 'bar',
     data: {
       datasets: datasetsArr,
@@ -51,7 +53,7 @@ export const makeConfig = (data: IMetalRes[], dates?: string[]) => {
           },
         },
       },
-        responsive: true,
+      responsive: true,
     },
   };
   return config;
@@ -71,7 +73,7 @@ const drawChartToSidebar = (config: ChartConfig) => {
 };
 
 export const initMetalsControls = async () => {
-  let metals = [];
+  const metals = [];
   for (const [key, value] of Object.entries(metallsTypes)) {
     metals.push(value);
   }

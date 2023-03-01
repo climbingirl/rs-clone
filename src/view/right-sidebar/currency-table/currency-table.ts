@@ -1,10 +1,11 @@
-
-import './currency-table.scss'
+import './currency-table.scss';
 
 const renderCurrencyTable = () => {
-    const sidebar: HTMLElement | null = document.querySelector('.right-sidebar');
-    if (sidebar) {
-        sidebar.insertAdjacentHTML('afterbegin', `
+  const sidebar: HTMLElement | null = document.querySelector('.right-sidebar');
+  if (sidebar) {
+    sidebar.insertAdjacentHTML(
+      'afterbegin',
+      `
             <div class="block">
                 <h3>Курсы валют</h3>
                 <div class="currency-table">
@@ -34,9 +35,9 @@ const renderCurrencyTable = () => {
                     </table>
                 </div>
             </div>
-        `)
-    }
-    
-}
+        `,
+    );
+  }
+};
 
 export default renderCurrencyTable;

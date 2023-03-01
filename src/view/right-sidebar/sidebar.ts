@@ -1,9 +1,9 @@
 import './right-sidebar.scss';
 
 const createSidebar = () => {
-    return `
+  return `
         <div class="right-sidebar"></div>
-    `
-}
+    `;
+};
 
 export default createSidebar;

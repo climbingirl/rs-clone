@@ -21,9 +21,8 @@ export const router = () => {
     const loginPage = createLoginPage();
     container.innerHTML = '';
     app.appendChild(loginPage);
-
   } else {
-    app.innerHTML='';
+    app.innerHTML = '';
     if (container) {
       app.appendChild(container);
       const footer = createFooter();
